@@ -24,6 +24,7 @@ SLOT="0"
 IUSE="x264 vpx theora mp3 vorbis"
 
 RDEPEND=">=dev-qt/qtgui-4.8.4-r1
+	|| ( media-video/ffmpeg media-video/libav )
 	x264? ( || ( media-video/ffmpeg media-video/libav ) )
 	theora? ( || ( media-video/ffmpeg media-video/libav ) )
 	vpx? ( || ( media-video/ffmpeg media-video/libav ) )
