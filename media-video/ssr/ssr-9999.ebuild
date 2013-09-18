@@ -32,6 +32,16 @@ RDEPEND=">=dev-qt/qtgui-4.8.4-r1
 	vorbis? ( || ( media-video/ffmpeg media-video/libav ) )"
 DEPEND="${RDEPEND}"
 
+pkg_setup() {
+	if [[ ${PV} == "9999" ]]; then
+		elog
+		elog "This ebuild merges the latest revision available from upstream's"
+		elog "git repository, and might fail to compile or work properly once"
+		elog "merged."
+		elog
+	fi
+}
+
 src_configure() {
 	econf \
 		--enable-dependency-tracking
