@@ -4,7 +4,7 @@
 
 EAPI="5"
 if [[ ${PV} = 9999 ]]; then
-	inherit autotools git-2
+	inherit autotools git-2 multilib-minimal
 fi
 
 DESCRIPTION="A Simple Screen Recorder"
@@ -40,13 +40,21 @@ pkg_setup() {
 		elog "merged."
 		elog
 	fi
+
 }
 
-src_configure() {
-	econf \
-		--enable-dependency-tracking
+multilib_src_configure() {
+	ECONF_SOURCE=${S} 
+	if $(is_final_abi ${abi}); then
+		econf \
+			--enable-dependency-tracking
+	else
+		econf \
+			--enable-dependency-tracking \
+			--disable-ssrprogram
+	fi
 }
 
-src_install() {
+multilib_src_install() {
 	emake DESTDIR="${D}" install || die "make install failed"
 }
