@@ -3,8 +3,11 @@
 # $Header: $
 
 EAPI="5"
+
+inherit autotools multilib-minimal
+
 if [[ ${PV} = 9999 ]]; then
-	inherit autotools git-2 multilib-minimal
+	inherit git-2
 fi
 
 DESCRIPTION="A Simple Screen Recorder"
