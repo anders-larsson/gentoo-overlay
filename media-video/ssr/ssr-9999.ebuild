@@ -44,6 +44,13 @@ pkg_setup() {
 		elog
 	fi
 
+	if [[ ${ABI} == amd64 ]]; then
+		elog "You may want to add abi_x86_32 to your use flags if you're using a"
+		elog "64bit system. This is neccessary if you want to record 32bit"
+		elog "applications using opengl injection"
+		elog "To build these add 'media-video/ssr abi_x86' to package.use"
+		elog
+	fi
 }
 
 multilib_src_configure() {
