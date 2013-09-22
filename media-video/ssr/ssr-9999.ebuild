@@ -1,4 +1,4 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
@@ -54,7 +54,7 @@ pkg_setup() {
 }
 
 multilib_src_configure() {
-	ECONF_SOURCE=${S} 
+	ECONF_SOURCE=${S}
 	if $(is_final_abi ${abi}); then
 		econf \
 			--enable-dependency-tracking
