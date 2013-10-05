@@ -27,12 +27,12 @@ SLOT="0"
 IUSE="x264 vpx theora mp3 vorbis"
 
 RDEPEND=">=dev-qt/qtgui-4.8.4-r1
-	|| ( media-video/ffmpeg media-video/libav )
-	x264? ( || ( media-video/ffmpeg media-video/libav ) )
-	theora? ( || ( media-video/ffmpeg media-video/libav ) )
-	vpx? ( || ( media-video/ffmpeg media-video/libav ) )
-	mp3? ( || ( media-video/ffmpeg media-video/libav ) )
-	vorbis? ( || ( media-video/ffmpeg media-video/libav ) )"
+	virtual/ffmpeg
+	x264? ( virtual/ffmpeg[x264] )
+	theora? ( virtual/ffmpeg[theora] )
+	mp3? ( virtual/ffmpeg[mp3] )
+	vpx? ( || ( media-video/ffmpeg[vpx] media-video/libav[vpx] ) )
+	vorbis? ( || ( media-video/ffmpeg[vorbis] media-video/libav[vorbis] ) )"
 DEPEND="${RDEPEND}"
 
 pkg_setup() {
