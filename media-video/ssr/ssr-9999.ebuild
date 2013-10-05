@@ -34,7 +34,9 @@ RDEPEND="dev-qt/qtgui
 	theora? ( virtual/ffmpeg[theora] )
 	mp3? ( virtual/ffmpeg[mp3] )
 	vpx? ( || ( media-video/ffmpeg[vpx] media-video/libav[vpx] ) )
-	vorbis? ( || ( media-video/ffmpeg[vorbis] media-video/libav[vorbis] ) )"
+	vorbis? ( || ( media-video/ffmpeg[vorbis] media-video/libav[vorbis] ) )
+	abi_x86_32? ( app-emulation/emul-linux-x86-opengl )
+	"
 DEPEND="${RDEPEND}"
 
 pkg_setup() {
