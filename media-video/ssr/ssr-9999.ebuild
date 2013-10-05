@@ -26,7 +26,9 @@ LICENSE="GPL-3"
 SLOT="0"
 IUSE="x264 vpx theora mp3 vorbis"
 
-RDEPEND=">=dev-qt/qtgui-4.8.4-r1
+RDEPEND="dev-qt/qtgui
+	media-sound/pulseaudio
+	virtual/glu
 	virtual/ffmpeg
 	x264? ( virtual/ffmpeg[x264] )
 	theora? ( virtual/ffmpeg[theora] )
