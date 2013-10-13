@@ -24,7 +24,7 @@ fi
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="mp3 pulseaudio theora vorbis vpx x264"
+IUSE="debug mp3 pulseaudio theora vorbis vpx x264"
 
 RDEPEND="
 	dev-qt/qtgui
@@ -62,6 +62,7 @@ multilib_src_configure() {
 	ECONF_SOURCE=${S}
 	if $(is_final_abi ${abi}); then
 		econf \
+			$(use_enable debug assert) \
 			$(use_enable pulseaudio) \
 			--enable-dependency-tracking
 	else
