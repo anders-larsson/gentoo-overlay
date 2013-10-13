@@ -24,15 +24,15 @@ fi
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="mp3 theora vorbis vpx x264"
+IUSE="mp3 pulseaudio theora vorbis vpx x264"
 
 RDEPEND="
 	dev-qt/qtgui
-	media-sound/pulseaudio
 	virtual/ffmpeg
 	virtual/glu
 	abi_x86_32? ( app-emulation/emul-linux-x86-opengl )
 	mp3? ( virtual/ffmpeg[mp3] )
+	pulseaudio? ( media-sound/pulseaudio )
 	theora? ( virtual/ffmpeg[theora] )
 	vorbis? ( || ( media-video/ffmpeg[vorbis] media-video/libav[vorbis] ) )
 	vpx? ( || ( media-video/ffmpeg[vpx] media-video/libav[vpx] ) )
@@ -62,6 +62,7 @@ multilib_src_configure() {
 	ECONF_SOURCE=${S}
 	if $(is_final_abi ${abi}); then
 		econf \
+			$(use_enable pulseaudio) \
 			--enable-dependency-tracking
 	else
 		econf \
