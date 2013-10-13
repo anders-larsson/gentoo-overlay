@@ -24,18 +24,19 @@ fi
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="x264 vpx theora mp3 vorbis"
+IUSE="mp3 theora vorbis vpx x264"
 
-RDEPEND="dev-qt/qtgui
+RDEPEND="
+	dev-qt/qtgui
 	media-sound/pulseaudio
-	virtual/glu
 	virtual/ffmpeg
-	x264? ( virtual/ffmpeg[x264] )
-	theora? ( virtual/ffmpeg[theora] )
-	mp3? ( virtual/ffmpeg[mp3] )
-	vpx? ( || ( media-video/ffmpeg[vpx] media-video/libav[vpx] ) )
-	vorbis? ( || ( media-video/ffmpeg[vorbis] media-video/libav[vorbis] ) )
+	virtual/glu
 	abi_x86_32? ( app-emulation/emul-linux-x86-opengl )
+	mp3? ( virtual/ffmpeg[mp3] )
+	theora? ( virtual/ffmpeg[theora] )
+	vorbis? ( || ( media-video/ffmpeg[vorbis] media-video/libav[vorbis] ) )
+	vpx? ( || ( media-video/ffmpeg[vpx] media-video/libav[vpx] ) )
+	x264? ( virtual/ffmpeg[x264] )
 	"
 DEPEND="${RDEPEND}"
 
