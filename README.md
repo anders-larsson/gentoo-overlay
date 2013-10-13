@@ -5,7 +5,7 @@ Overlay for Gentoo/Linux packages
 
 The following packages are available in this overlay:
 
-* ssr (SimpleScreenRecorder, http://www.maartenbaert.be/simplescreenrecorder)
+* simplescreenrecorder - http://www.maartenbaert.be/simplescreenrecorder)
 
 ## Installing
 This overlay is not official and not available in layman.

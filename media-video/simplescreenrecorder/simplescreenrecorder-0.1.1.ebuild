@@ -12,17 +12,19 @@ fi
 
 DESCRIPTION="A Simple Screen Recorder"
 HOMEPAGE="http://www.maartenbaert.be/simplescreenrecorder"
+LICENSE="GPL-3"
+PKGNAME="ssr"
+S=${WORKDIR}/${PKGNAME}-${PV}
 if [[ ${PV} = 9999 ]]; then
-	EGIT_REPO_URI="git://github.com/MaartenBaert/${PN}.git
-		https://github.com/MaartenBaert/${PN}.git"
+	EGIT_REPO_URI="git://github.com/MaartenBaert/${PKGNAME}.git
+		https://github.com/MaartenBaert/${PKGNAME}.git"
 	EGIT_BOOTSTRAP="eautoreconf"
 	KEYWORDS="~amd64 ~x86"
 else
-	SRC_URI="https://github.com/MaartenBaert/${PN}/archive/${PV}.tar.gz"
+	SRC_URI="https://github.com/MaartenBaert/${PKGNAME}/archive/${PV}.tar.gz"
 	KEYWORDS="amd64 x86"
 fi
 
-LICENSE="GPL-3"
 SLOT="0"
 IUSE="x264 vpx theora mp3 vorbis"
 
@@ -52,7 +54,8 @@ pkg_setup() {
 		elog "You may want to add abi_x86_32 to your use flags if you're using a"
 		elog "64bit system. This is neccessary if you want to record 32bit"
 		elog "applications using opengl injection"
-		elog "To build these add 'media-video/ssr abi_x86' to package.use"
+		elog "To build these add 'media-video/simplescreenrecorder abi_x86'"
+		elog "to package.use"
 		elog
 	fi
 }

@@ -12,30 +12,33 @@ fi
 
 DESCRIPTION="A Simple Screen Recorder"
 HOMEPAGE="http://www.maartenbaert.be/simplescreenrecorder"
+LICENSE="GPL-3"
+PKGNAME="ssr"
+S=${WORKDIR}/${PKGNAME}-${PV}
 if [[ ${PV} = 9999 ]]; then
-	EGIT_REPO_URI="git://github.com/MaartenBaert/${PN}.git
-		https://github.com/MaartenBaert/${PN}.git"
+	EGIT_REPO_URI="git://github.com/MaartenBaert/${PKGNAME}.git
+		https://github.com/MaartenBaert/${PKGNAME}.git"
 	EGIT_BOOTSTRAP="eautoreconf"
 	KEYWORDS="~amd64 ~x86"
 else
-	SRC_URI="https://github.com/MaartenBaert/${PN}/archive/${PV}.tar.gz"
+	SRC_URI="https://github.com/MaartenBaert/${PKGNAME}/archive/${PV}.tar.gz"
 	KEYWORDS="amd64 x86"
 fi
 
-LICENSE="GPL-3"
 SLOT="0"
-IUSE="x264 vpx theora mp3 vorbis"
+IUSE="debug mp3 pulseaudio theora vorbis vpx x264"
 
-RDEPEND="dev-qt/qtgui
-	media-sound/pulseaudio
-	virtual/glu
+RDEPEND="
+	dev-qt/qtgui
 	virtual/ffmpeg
-	x264? ( virtual/ffmpeg[x264] )
-	theora? ( virtual/ffmpeg[theora] )
-	mp3? ( virtual/ffmpeg[mp3] )
-	vpx? ( || ( media-video/ffmpeg[vpx] media-video/libav[vpx] ) )
-	vorbis? ( || ( media-video/ffmpeg[vorbis] media-video/libav[vorbis] ) )
+	virtual/glu
 	abi_x86_32? ( app-emulation/emul-linux-x86-opengl )
+	mp3? ( virtual/ffmpeg[mp3] )
+	pulseaudio? ( media-sound/pulseaudio )
+	theora? ( virtual/ffmpeg[theora] )
+	vorbis? ( || ( media-video/ffmpeg[vorbis] media-video/libav[vorbis] ) )
+	vpx? ( || ( media-video/ffmpeg[vpx] media-video/libav[vpx] ) )
+	x264? ( virtual/ffmpeg[x264] )
 	"
 DEPEND="${RDEPEND}"
 
@@ -52,7 +55,8 @@ pkg_setup() {
 		elog "You may want to add abi_x86_32 to your use flags if you're using a"
 		elog "64bit system. This is neccessary if you want to record 32bit"
 		elog "applications using opengl injection"
-		elog "To build these add 'media-video/ssr abi_x86' to package.use"
+		elog "To build these add 'media-video/simplescreenrecorder abi_x86'"
+		elog "to package.use"
 		elog
 	fi
 }
@@ -61,6 +65,8 @@ multilib_src_configure() {
 	ECONF_SOURCE=${S}
 	if $(is_final_abi ${abi}); then
 		econf \
+			$(use_enable debug assert) \
+			$(use_enable pulseaudio) \
 			--enable-dependency-tracking
 	else
 		econf \
