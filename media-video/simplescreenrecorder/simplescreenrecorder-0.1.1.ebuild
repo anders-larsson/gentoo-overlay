@@ -51,13 +51,12 @@ pkg_setup() {
 	fi
 
 	if [[ ${ABI} == amd64 ]]; then
-		elog "You may want to add abi_x86_32 to your use flags if you're using a"
-		elog "64bit system. This is neccessary if you want to record 32bit"
-		elog "applications using opengl injection"
-		elog "To build these add 'media-video/simplescreenrecorder abi_x86'"
-		elog "to package.use"
+		elog "You may want to add USE flag 'abi_x86_32' when running a 64bit system"
+		elog "When added 32bit GLInject libraries are also included. This is"
+		elog "required if you want to use OpenGL recording on 32bit applications."
 		elog
 	fi
+
 }
 
 multilib_src_configure() {
