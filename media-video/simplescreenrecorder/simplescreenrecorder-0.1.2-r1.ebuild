@@ -22,7 +22,7 @@ if [[ ${PV} = 9999 ]]; then
 	KEYWORDS="~amd64 ~x86"
 else
 	SRC_URI="https://github.com/MaartenBaert/${PKGNAME}/archive/${PV}.tar.gz"
-	KEYWORDS="amd64 x86"
+	KEYWORDS="~amd64 ~x86"
 fi
 
 SLOT="0"
@@ -32,7 +32,7 @@ RDEPEND="
 	dev-qt/qtgui
 	virtual/ffmpeg
 	virtual/glu
-	abi_x86_32? ( app-emulation/emul-linux-x86-opengl )
+	abi_x86_32? ( || ( virtual/glu[abi_x86_32] app-emulation/emul-linux-x86-opengl ) )
 	mp3? ( virtual/ffmpeg[mp3] )
 	pulseaudio? ( media-sound/pulseaudio )
 	theora? ( virtual/ffmpeg[theora] )
