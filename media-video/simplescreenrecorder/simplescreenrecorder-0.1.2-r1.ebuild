@@ -30,15 +30,33 @@ IUSE="debug mp3 pulseaudio theora vorbis vpx x264"
 
 RDEPEND="
 	dev-qt/qtgui
-	virtual/ffmpeg
 	virtual/glu
-	abi_x86_32? ( || ( virtual/glu[abi_x86_32] app-emulation/emul-linux-x86-opengl ) )
-	mp3? ( virtual/ffmpeg[mp3] )
+	media-libs/mesa
+	x11-libs/libX11
+	x11-libs/libXext
+	x11-libs/libXfixes
+	abi_x86_32? ( 
+		|| ( 
+			(
+				virtual/glu[abi_x86_32]
+				media-libs/mesa[abi_x86_32]
+			)
+			app-emulation/emul-linux-x86-opengl[-abi_x86_32]
+		)
+		|| (
+			(
+				x11-libs/libX11[abi_x86_32]
+				x11-libs/libXext[abi_x86_32]
+				x11-libs/libXfixes[abi_x86_32]
+			)
+			app-emulation/emul-linux-x86-xlibs[-abi_x86_32]
+		)
+	)
 	pulseaudio? ( media-sound/pulseaudio )
-	theora? ( virtual/ffmpeg[theora] )
-	vorbis? ( || ( media-video/ffmpeg[vorbis] media-video/libav[vorbis] ) )
-	vpx? ( || ( media-video/ffmpeg[vpx] media-video/libav[vpx] ) )
-	x264? ( virtual/ffmpeg[x264] )
+	|| (
+		media-video/ffmpeg[vorbis?,vpx?,x264?,mp3?,theora?]
+		media-video/libav[vorbis?,vpx?,x264?,mp3?,theora?]
+	)
 	"
 DEPEND="${RDEPEND}"
 
@@ -74,5 +92,5 @@ multilib_src_configure() {
 }
 
 multilib_src_install() {
-	emake DESTDIR="${D}" install || die "make install failed"
+	emake DESTDIR="${D}" install 
 }
