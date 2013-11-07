@@ -29,8 +29,10 @@ SLOT="0"
 IUSE="debug mp3 pulseaudio theora vorbis vpx x264"
 
 RDEPEND="
+	dev-qt/qtcore
 	dev-qt/qtgui
 	virtual/glu
+	media-libs/alsa-lib
 	media-libs/mesa
 	x11-libs/libX11
 	x11-libs/libXext
@@ -46,7 +48,6 @@ RDEPEND="
 		|| (
 			(
 				x11-libs/libX11[abi_x86_32]
-				x11-libs/libXext[abi_x86_32]
 				x11-libs/libXfixes[abi_x86_32]
 			)
 			app-emulation/emul-linux-x86-xlibs[-abi_x86_32]
