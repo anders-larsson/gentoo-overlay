@@ -19,7 +19,7 @@ if [[ ${PV} = 9999 ]]; then
 	EGIT_REPO_URI="git://github.com/MaartenBaert/${PKGNAME}.git
 		https://github.com/MaartenBaert/${PKGNAME}.git"
 	EGIT_BOOTSTRAP="eautoreconf"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS=""
 else
 	SRC_URI="https://github.com/MaartenBaert/${PKGNAME}/archive/${PV}.tar.gz"
 	KEYWORDS="~amd64 ~x86"
@@ -31,28 +31,12 @@ IUSE="debug mp3 pulseaudio theora vorbis vpx x264"
 RDEPEND="
 	dev-qt/qtcore
 	dev-qt/qtgui
-	virtual/glu
+	virtual/glu[${MULTILIB_USEDEP}]
 	media-libs/alsa-lib
-	media-libs/mesa
-	x11-libs/libX11
+	media-libs/mesa[${MULTILIB_USEDEP}]
+	x11-libs/libX11[${MULTILIB_USEDEP}]
 	x11-libs/libXext
-	x11-libs/libXfixes
-	abi_x86_32? ( 
-		|| ( 
-			(
-				virtual/glu[abi_x86_32]
-				media-libs/mesa[abi_x86_32]
-			)
-			app-emulation/emul-linux-x86-opengl[-abi_x86_32]
-		)
-		|| (
-			(
-				x11-libs/libX11[abi_x86_32]
-				x11-libs/libXfixes[abi_x86_32]
-			)
-			app-emulation/emul-linux-x86-xlibs[-abi_x86_32]
-		)
-	)
+	x11-libs/libXfixes[${MULTILIB_USEDEP}]
 	pulseaudio? ( media-sound/pulseaudio )
 	|| (
 		media-video/ffmpeg[vorbis?,vpx?,x264?,mp3?,theora?]
