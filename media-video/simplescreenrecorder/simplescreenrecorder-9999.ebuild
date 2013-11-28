@@ -18,7 +18,7 @@ S=${WORKDIR}/${PKGNAME}-${PV}
 if [[ ${PV} = 9999 ]]; then
 	EGIT_REPO_URI="git://github.com/MaartenBaert/${PKGNAME}.git
 		https://github.com/MaartenBaert/${PKGNAME}.git"
-	EGIT_BOOTSTRAP="eautoreconf"
+	EGIT_BOOTSTRAP=""
 	KEYWORDS=""
 else
 	SRC_URI="https://github.com/MaartenBaert/${PKGNAME}/archive/${PV}.tar.gz"
@@ -34,6 +34,7 @@ RDEPEND="
 	virtual/glu[${MULTILIB_USEDEP}]
 	media-libs/alsa-lib
 	media-libs/mesa[${MULTILIB_USEDEP}]
+	media-libs/soxr[${MULTILIB_USEDEP}]
 	x11-libs/libX11[${MULTILIB_USEDEP}]
 	x11-libs/libXext
 	x11-libs/libXfixes[${MULTILIB_USEDEP}]
@@ -60,6 +61,20 @@ pkg_setup() {
 		elog "required if you want to use OpenGL recording on 32bit applications."
 		elog
 	fi
+}
+
+src_prepare() {
+	local error='Failed to remove bundled soxr'
+
+	# Remove bundled soxr. Use soxr provided by system instead
+	rm -rf 3rdparty || die "${error}"
+	sed -i -e 's/3rdparty//' Makefile.am || die "${error}"
+	sed -i -e 's/3rdparty\/Makefile//' \
+		-e '/\[3rdparty\/soxr\]/d' \
+		-e 's/3rdparty\/soxr//' configure.ac || die "${error}"
+
+	sed -i -e '/3rdparty/d' src/Makefile.am  || die "${error}"
+	eautoreconf
 }
 
 multilib_src_configure() {
