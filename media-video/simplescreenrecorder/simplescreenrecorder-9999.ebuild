@@ -26,7 +26,7 @@ else
 fi
 
 SLOT="0"
-IUSE="debug mp3 pulseaudio theora vorbis vpx x264"
+IUSE="debug jack mp3 pulseaudio theora vorbis vpx x264"
 
 RDEPEND="
 	dev-qt/qtcore
@@ -38,6 +38,7 @@ RDEPEND="
 	x11-libs/libX11[${MULTILIB_USEDEP}]
 	x11-libs/libXext
 	x11-libs/libXfixes[${MULTILIB_USEDEP}]
+	jack? ( media-sound/jack-audio-connection-kit[${MULTILIB_USEDEP}] )
 	pulseaudio? ( media-sound/pulseaudio )
 	|| (
 		media-video/ffmpeg[vorbis?,vpx?,x264?,mp3?,theora?]
@@ -83,6 +84,7 @@ multilib_src_configure() {
 		econf \
 			$(use_enable debug assert) \
 			$(use_enable pulseaudio) \
+			$(use_enable jack) \
 			--enable-dependency-tracking
 	else
 		econf \
