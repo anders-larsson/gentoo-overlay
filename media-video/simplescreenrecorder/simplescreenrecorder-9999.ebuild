@@ -18,7 +18,7 @@ S=${WORKDIR}/${PKGNAME}-${PV}
 if [[ ${PV} = 9999 ]]; then
 	EGIT_REPO_URI="git://github.com/MaartenBaert/${PKGNAME}.git
 		https://github.com/MaartenBaert/${PKGNAME}.git"
-	EGIT_BOOTSTRAP="eautoreconf"
+	EGIT_BOOTSTRAP=""
 	KEYWORDS=""
 else
 	SRC_URI="https://github.com/MaartenBaert/${PKGNAME}/archive/${PV}.tar.gz"
@@ -26,33 +26,19 @@ else
 fi
 
 SLOT="0"
-IUSE="debug mp3 pulseaudio theora vorbis vpx x264"
+IUSE="debug jack mp3 pulseaudio theora vorbis vpx x264"
 
 RDEPEND="
 	dev-qt/qtcore
 	dev-qt/qtgui
-	virtual/glu
+	virtual/glu[${MULTILIB_USEDEP}]
 	media-libs/alsa-lib
-	media-libs/mesa
-	x11-libs/libX11
+	media-libs/mesa[${MULTILIB_USEDEP}]
+	media-libs/soxr[${MULTILIB_USEDEP}]
+	x11-libs/libX11[${MULTILIB_USEDEP}]
 	x11-libs/libXext
-	x11-libs/libXfixes
-	abi_x86_32? ( 
-		|| ( 
-			(
-				virtual/glu[abi_x86_32]
-				media-libs/mesa[abi_x86_32]
-			)
-			app-emulation/emul-linux-x86-opengl[-abi_x86_32]
-		)
-		|| (
-			(
-				x11-libs/libX11[abi_x86_32]
-				x11-libs/libXfixes[abi_x86_32]
-			)
-			app-emulation/emul-linux-x86-xlibs[-abi_x86_32]
-		)
-	)
+	x11-libs/libXfixes[${MULTILIB_USEDEP}]
+	jack? ( media-sound/jack-audio-connection-kit[${MULTILIB_USEDEP}] )
 	pulseaudio? ( media-sound/pulseaudio )
 	|| (
 		media-video/ffmpeg[vorbis?,vpx?,x264?,mp3?,theora?]
@@ -78,12 +64,27 @@ pkg_setup() {
 	fi
 }
 
+src_prepare() {
+	local error='Failed to remove bundled soxr'
+
+	# Remove bundled soxr. Use soxr provided by system instead
+	rm -rf 3rdparty || die "${error}"
+	sed -i -e 's/3rdparty//' Makefile.am || die "${error}"
+	sed -i -e 's/3rdparty\/Makefile//' \
+		-e '/\[3rdparty\/soxr\]/d' \
+		-e 's/3rdparty\/soxr//' configure.ac || die "${error}"
+
+	sed -i -e '/3rdparty/d' src/Makefile.am  || die "${error}"
+	eautoreconf
+}
+
 multilib_src_configure() {
 	ECONF_SOURCE=${S}
 	if $(is_final_abi ${abi}); then
 		econf \
 			$(use_enable debug assert) \
 			$(use_enable pulseaudio) \
+			$(use_enable jack) \
 			--enable-dependency-tracking
 	else
 		econf \
