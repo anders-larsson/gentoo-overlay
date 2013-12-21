@@ -34,7 +34,7 @@ RDEPEND="
 	virtual/glu[${MULTILIB_USEDEP}]
 	media-libs/alsa-lib
 	media-libs/mesa[${MULTILIB_USEDEP}]
-	media-libs/soxr[${MULTILIB_USEDEP}]
+	media-libs/soxr
 	x11-libs/libX11[${MULTILIB_USEDEP}]
 	x11-libs/libXext
 	x11-libs/libXfixes[${MULTILIB_USEDEP}]
