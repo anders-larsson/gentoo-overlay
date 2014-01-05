@@ -79,20 +79,11 @@ src_prepare() {
 }
 
 multilib_src_configure() {
-	ECONF_SOURCE=${S}
-	if $(is_final_abi ${abi}); then
+	ECONF_SOURCE=${S} \
 		econf \
-			$(use_enable debug assert) \
-			$(use_enable pulseaudio) \
-			$(use_enable jack) \
+			$(multilib_is_native_abi && use_enable debug assert) \
+			$(multilib_is_native_abi && use_enable pulseaudio) \
+			$(multilib_is_native_abi && use_enable jack) \
+			$(multilib_is_native_abi || echo "--disable-ssrprogram") \
 			--enable-dependency-tracking
-	else
-		econf \
-			--enable-dependency-tracking \
-			--disable-ssrprogram
-	fi
-}
-
-multilib_src_install() {
-	emake DESTDIR="${D}" install 
 }
