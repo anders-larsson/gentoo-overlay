@@ -34,11 +34,11 @@ RDEPEND="
 	virtual/glu[${MULTILIB_USEDEP}]
 	media-libs/alsa-lib
 	media-libs/mesa[${MULTILIB_USEDEP}]
-	media-libs/soxr[${MULTILIB_USEDEP}]
+	media-libs/soxr
 	x11-libs/libX11[${MULTILIB_USEDEP}]
 	x11-libs/libXext
 	x11-libs/libXfixes[${MULTILIB_USEDEP}]
-	jack? ( media-sound/jack-audio-connection-kit[${MULTILIB_USEDEP}] )
+	jack? ( media-sound/jack-audio-connection-kit )
 	pulseaudio? ( media-sound/pulseaudio )
 	|| (
 		media-video/ffmpeg[vorbis?,vpx?,x264?,mp3?,theora?]
@@ -79,20 +79,11 @@ src_prepare() {
 }
 
 multilib_src_configure() {
-	ECONF_SOURCE=${S}
-	if $(is_final_abi ${abi}); then
+	ECONF_SOURCE=${S} \
 		econf \
-			$(use_enable debug assert) \
-			$(use_enable pulseaudio) \
-			$(use_enable jack) \
+			$(multilib_is_native_abi && use_enable debug assert) \
+			$(multilib_is_native_abi && use_enable pulseaudio) \
+			$(multilib_is_native_abi && use_enable jack) \
+			$(multilib_is_native_abi || echo "--disable-ssrprogram") \
 			--enable-dependency-tracking
-	else
-		econf \
-			--enable-dependency-tracking \
-			--disable-ssrprogram
-	fi
-}
-
-multilib_src_install() {
-	emake DESTDIR="${D}" install 
 }
