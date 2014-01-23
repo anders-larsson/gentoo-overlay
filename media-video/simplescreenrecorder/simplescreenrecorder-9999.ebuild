@@ -62,6 +62,16 @@ pkg_setup() {
 		elog "required if you want to use OpenGL recording on 32bit applications."
 		elog
 	fi
+
+	if has_version media-video/ffmpeg[x264] && has_version media-libs/x264[10bit]; then
+		eerror
+		eerror "media-libs/x264 is currently built with 10bit useflag."
+		eerror "This is known to prevent simplescreenrecorder from recording x264 videos"
+		eerror "correctly. Please build media-libs/x264 without 10bit if you want to "
+		eerror "record videos with x264."
+		eerror
+	fi
+
 }
 
 src_prepare() {
