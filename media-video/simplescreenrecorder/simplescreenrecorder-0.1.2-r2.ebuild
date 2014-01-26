@@ -61,7 +61,7 @@ pkg_setup() {
 		elog
 	fi
 
-	if has_version media-video/ffmpeg[x264] && has_version media-libs/x264[10bit]; then
+	if ( has_version media-video/ffmpeg[x264] || has_version media-video/libav[x264] ) && has_version media-libs/x264[10bit]; then
 		eerror
 		eerror "media-libs/x264 is currently built with 10bit useflag."
 		eerror "This is known to prevent simplescreenrecorder from recording x264 videos"
