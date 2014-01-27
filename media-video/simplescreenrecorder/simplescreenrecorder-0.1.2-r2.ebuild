@@ -18,7 +18,7 @@ S=${WORKDIR}/${PKGNAME}-${PV}
 if [[ ${PV} = 9999 ]]; then
 	EGIT_REPO_URI="git://github.com/MaartenBaert/${PKGNAME}.git
 		https://github.com/MaartenBaert/${PKGNAME}.git"
-	EGIT_BOOTSTRAP=""
+	EGIT_BOOTSTRAP="eautoreconf"
 	KEYWORDS=""
 else
 	SRC_URI="https://github.com/MaartenBaert/${PKGNAME}/archive/${PV}.tar.gz"
@@ -26,7 +26,7 @@ else
 fi
 
 SLOT="0"
-IUSE="debug jack mp3 pulseaudio theora vorbis vpx x264"
+IUSE="debug mp3 pulseaudio theora vorbis vpx x264"
 
 RDEPEND="
 	dev-qt/qtcore
@@ -34,11 +34,9 @@ RDEPEND="
 	virtual/glu[${MULTILIB_USEDEP}]
 	media-libs/alsa-lib
 	media-libs/mesa[${MULTILIB_USEDEP}]
-	media-libs/soxr
 	x11-libs/libX11[${MULTILIB_USEDEP}]
 	x11-libs/libXext
 	x11-libs/libXfixes[${MULTILIB_USEDEP}]
-	jack? ( media-sound/jack-audio-connection-kit )
 	pulseaudio? ( media-sound/pulseaudio )
 	|| (
 		media-video/ffmpeg[vorbis?,vpx?,x264?,mp3?,theora?]
@@ -74,26 +72,20 @@ pkg_setup() {
 
 }
 
-src_prepare() {
-	local error='Failed to remove bundled soxr'
-
-	# Remove bundled soxr. Use soxr provided by system instead
-	rm -rf 3rdparty || die "${error}"
-	sed -i -e 's/3rdparty//' Makefile.am || die "${error}"
-	sed -i -e 's/3rdparty\/Makefile//' \
-		-e '/\[3rdparty\/soxr\]/d' \
-		-e 's/3rdparty\/soxr//' configure.ac || die "${error}"
-
-	sed -i -e '/3rdparty/d' src/Makefile.am  || die "${error}"
-	eautoreconf
+multilib_src_configure() {
+	ECONF_SOURCE=${S}
+	if $(is_final_abi ${abi}); then
+		econf \
+			$(use_enable debug assert) \
+			$(use_enable pulseaudio) \
+			--enable-dependency-tracking
+	else
+		econf \
+			--enable-dependency-tracking \
+			--disable-ssrprogram
+	fi
 }
 
-multilib_src_configure() {
-	ECONF_SOURCE=${S} \
-		econf \
-			$(multilib_is_native_abi && use_enable debug assert) \
-			$(multilib_is_native_abi && use_enable pulseaudio) \
-			$(multilib_is_native_abi && use_enable jack) \
-			$(multilib_is_native_abi || echo "--disable-ssrprogram") \
-			--enable-dependency-tracking
+multilib_src_install() {
+	emake DESTDIR="${D}" install 
 }
