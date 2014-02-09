@@ -71,7 +71,6 @@ pkg_setup() {
 		ewarn "record videos with x264."
 		ewarn
 	fi
-
 }
 
 src_prepare() {
