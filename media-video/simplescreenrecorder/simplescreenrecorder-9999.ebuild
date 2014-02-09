@@ -89,11 +89,24 @@ src_prepare() {
 }
 
 multilib_src_configure() {
+	local myconf=( --enable-dependency-tracking )
+	
+	if multilib_build_binaries; then
+		myconf+=(
+			$(use_enable debug assert)
+			$(use_enable pulseaudio)
+			$(use_enable jack)
+		)
+	else
+		myconf+=(
+			--disable-assert
+			--disable-pulseaudio
+			--disable-jack
+			--disable-ssrprogram
+		)
+	fi
+
 	ECONF_SOURCE=${S} \
-		econf \
-			$(multilib_is_native_abi && use_enable debug assert) \
-			$(multilib_is_native_abi && use_enable pulseaudio) \
-			$(multilib_is_native_abi && use_enable jack) \
-			$(multilib_is_native_abi || echo "--disable-ssrprogram") \
-			--enable-dependency-tracking
+	econf \
+		${myconf[@]}
 }
