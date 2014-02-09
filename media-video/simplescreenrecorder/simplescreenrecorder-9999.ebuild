@@ -107,6 +107,5 @@ multilib_src_configure() {
 	fi
 
 	ECONF_SOURCE=${S} \
-	econf \
-		${myconf[@]}
+		econf ${myconf[@]}
 }
