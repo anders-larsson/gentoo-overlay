@@ -64,14 +64,13 @@ pkg_setup() {
 	fi
 
 	if ( has_version media-video/ffmpeg[x264] || has_version media-video/libav[x264] ) && has_version media-libs/x264[10bit]; then
-		eerror
-		eerror "media-libs/x264 is currently built with 10bit useflag."
-		eerror "This is known to prevent simplescreenrecorder from recording x264 videos"
-		eerror "correctly. Please build media-libs/x264 without 10bit if you want to "
-		eerror "record videos with x264."
-		eerror
+		ewarn	
+		ewarn "media-libs/x264 is currently built with 10bit useflag."
+		ewarn "This is known to prevent simplescreenrecorder from recording x264 videos"
+		ewarn "correctly. Please build media-libs/x264 without 10bit if you want to "
+		ewarn "record videos with x264."
+		ewarn
 	fi
-
 }
 
 src_prepare() {
@@ -89,11 +88,23 @@ src_prepare() {
 }
 
 multilib_src_configure() {
+	local myconf=( --enable-dependency-tracking )
+	
+	if multilib_build_binaries; then
+		myconf+=(
+			$(use_enable debug assert)
+			$(use_enable pulseaudio)
+			$(use_enable jack)
+		)
+	else
+		myconf+=(
+			--disable-assert
+			--disable-pulseaudio
+			--disable-jack
+			--disable-ssrprogram
+		)
+	fi
+
 	ECONF_SOURCE=${S} \
-		econf \
-			$(multilib_is_native_abi && use_enable debug assert) \
-			$(multilib_is_native_abi && use_enable pulseaudio) \
-			$(multilib_is_native_abi && use_enable jack) \
-			$(multilib_is_native_abi || echo "--disable-ssrprogram") \
-			--enable-dependency-tracking
+		econf ${myconf[@]}
 }
