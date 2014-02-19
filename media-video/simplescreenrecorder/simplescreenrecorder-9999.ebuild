@@ -64,7 +64,7 @@ pkg_setup() {
 	fi
 
 	if ( has_version media-video/ffmpeg[x264] || has_version media-video/libav[x264] ) && has_version media-libs/x264[10bit]; then
-		ewarn	
+		ewarn
 		ewarn "media-libs/x264 is currently built with 10bit useflag."
 		ewarn "This is known to prevent simplescreenrecorder from recording x264 videos"
 		ewarn "correctly. Please build media-libs/x264 without 10bit if you want to "
@@ -89,7 +89,7 @@ src_prepare() {
 
 multilib_src_configure() {
 	local myconf=( --enable-dependency-tracking )
-	
+
 	if multilib_build_binaries; then
 		myconf+=(
 			$(use_enable debug assert)
