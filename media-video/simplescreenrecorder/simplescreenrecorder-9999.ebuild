@@ -34,7 +34,6 @@ RDEPEND="
 	virtual/glu[${MULTILIB_USEDEP}]
 	media-libs/alsa-lib
 	media-libs/mesa[${MULTILIB_USEDEP}]
-	media-libs/soxr
 	x11-libs/libX11[${MULTILIB_USEDEP}]
 	x11-libs/libXext
 	x11-libs/libXfixes[${MULTILIB_USEDEP}]
@@ -71,20 +70,6 @@ pkg_setup() {
 		ewarn "record videos with x264."
 		ewarn
 	fi
-}
-
-src_prepare() {
-	local error='Failed to remove bundled soxr'
-
-	# Remove bundled soxr. Use soxr provided by system instead
-	rm -rf 3rdparty || die "${error}"
-	sed -i -e 's/3rdparty//' Makefile.am || die "${error}"
-	sed -i -e 's/3rdparty\/Makefile//' \
-		-e '/\[3rdparty\/soxr\]/d' \
-		-e 's/3rdparty\/soxr//' configure.ac || die "${error}"
-
-	sed -i -e '/3rdparty/d' src/Makefile.am  || die "${error}"
-	eautoreconf
 }
 
 multilib_src_configure() {
