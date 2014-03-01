@@ -9,9 +9,15 @@ The following packages are available in this overlay:
 
 ## Installing
 This overlay is not official and not available in layman.
-To use this repository you need to add it manually to your layman configuration.
+To use this repository you can either add it using layman or add it manually to your layman configuration.
 
-Modify /etc/layman/layman.cfg and include the following line for "overlays".
+Add it using layman:
+
+    layman -f -o http://anders-larsson.github.io/gentoo-overlay/repositories.xml -a anders-larsson
+
+Add it manually:
+
+    Edit /etc/layman/layman.cfg and include the following line for "overlays".
 
     http://anders-larsson.github.io/gentoo-overlay/repositories.xml
 
