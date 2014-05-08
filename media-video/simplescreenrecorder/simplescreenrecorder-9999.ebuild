@@ -73,23 +73,12 @@ pkg_setup() {
 }
 
 multilib_src_configure() {
-	local myconf=( --enable-dependency-tracking )
 
-	if multilib_build_binaries; then
-		myconf+=(
-			$(use_enable debug assert)
-			$(use_enable pulseaudio)
-			$(use_enable jack)
-		)
-	else
-		myconf+=(
-			--disable-assert
-			--disable-pulseaudio
-			--disable-jack
-			--disable-ssrprogram
-		)
-	fi
-
-	ECONF_SOURCE=${S} \
-		econf ${myconf[@]}
+	ECONF_SOURCE="${S}" \
+	econf \
+		--enable-dependency-tracking \
+		$(multilib_native_use_enable debug assert) \
+		$(multilib_native_use_enable pulseaudio) \
+		$(multilib_native_use_enable jack) \
+		$(multilib_native_use_enable ssrprogram)
 }
