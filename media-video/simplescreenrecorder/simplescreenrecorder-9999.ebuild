@@ -74,16 +74,17 @@ pkg_setup() {
 
 multilib_src_configure() {
 
-	local myconf=()
+	local myconf=(
+		--enable-dependency-tracking
+		$(multilib_native_use_enable debug assert)
+		$(multilib_native_use_enable pulseaudio)
+		$(multilib_native_use_enable jack)
+	)
 
 	multilib_is_native_abi || myconf+=( --disable-ssrprogram )
 
 	ECONF_SOURCE="${S}" \
 	econf \
-		--enable-dependency-tracking \
-		$(multilib_native_use_enable debug assert) \
-		$(multilib_native_use_enable pulseaudio) \
-		$(multilib_native_use_enable jack) \
 		${myconf[@]}
 
 }
