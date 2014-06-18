@@ -74,8 +74,9 @@ pkg_setup() {
 
 multilib_src_configure() {
 
-	local myconf=""
-	multilib_is_native_abi || myconf=" --disable-ssrprogram"
+	local myconf=()
+
+	multilib_is_native_abi || myconf+=( --disable-ssrprogram )
 
 	ECONF_SOURCE="${S}" \
 	econf \
@@ -83,5 +84,6 @@ multilib_src_configure() {
 		$(multilib_native_use_enable debug assert) \
 		$(multilib_native_use_enable pulseaudio) \
 		$(multilib_native_use_enable jack) \
-		${myconf}
+		${myconf[@]}
+
 }
