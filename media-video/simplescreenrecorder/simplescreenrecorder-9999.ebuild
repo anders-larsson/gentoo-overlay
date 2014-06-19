@@ -81,6 +81,12 @@ multilib_src_configure() {
 		$(multilib_native_use_enable jack)
 	)
 
+	# libav doesn't have AVFrame::channels
+	# https://github.com/MaartenBaert/ssr/issues/195#issuecomment-45646159
+	if has_version media-video/libav; then
+		myconf+=( --disable-ffmpeg-versions )
+	fi
+
 	multilib_is_native_abi || myconf+=( --disable-ssrprogram )
 
 	ECONF_SOURCE="${S}" \
