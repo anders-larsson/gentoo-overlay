@@ -1,0 +1,39 @@
+diff --git src/dfinstance.cpp src/dfinstance.cpp
+index b05a272..55b6214 100644
+--- src/dfinstance.cpp
++++ src/dfinstance.cpp
+@@ -102,7 +102,7 @@ DFInstance::DFInstance(QObject* parent)
+     search_paths << working_dir.path();
+ 
+     QString subdir = LAYOUT_SUBDIR;
+-    search_paths << QString("etc/memory_layouts/%1").arg(subdir);
++    search_paths << QString("/usr/share/dwarftherapist/etc/memory_layouts/%1").arg(subdir);
+ 
+     TRACE << "Searching for MemoryLayout ini files in the following directories";
+     foreach(QString path, search_paths) {
+diff --git src/dwarftherapist.cpp src/dwarftherapist.cpp
+index 23129a7..1ee45e8 100644
+--- src/dwarftherapist.cpp
++++ src/dwarftherapist.cpp
+@@ -128,7 +128,7 @@ void DwarfTherapist::setup_logging() {
+ 
+     //setup logging
+     m_log_mgr = new LogManager(this);
+-    TruncatingFileLogger *log = m_log_mgr->add_logger("log/run.log");
++    TruncatingFileLogger *log = m_log_mgr->add_logger("/tmp/dt.log");
+     if (log) {
+         LogAppender *app = m_log_mgr->add_appender("core", log, LL_TRACE);
+         if (app) {
+diff --git src/gamedatareader.cpp src/gamedatareader.cpp
+index 56ebe72..3660bde 100644
+--- src/gamedatareader.cpp
++++ src/gamedatareader.cpp
+@@ -44,7 +44,7 @@ GameDataReader::GameDataReader(QObject *parent)
+     : QObject(parent)
+ {
+     QDir working_dir = QDir::current();
+-    QString filename = working_dir.absoluteFilePath("etc/game_data.ini");
++    QString filename = working_dir.absoluteFilePath("/usr/share/dwarftherapist/etc/game_data.ini");
+     m_data_settings = new QSettings(filename, QSettings::IniFormat);
+ 
+     build_calendar();
