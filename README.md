@@ -5,6 +5,7 @@ Overlay for Gentoo/Linux packages
 
 The following packages are available in this overlay:
 
+* dwarf-therapist - https://github.com/splintermind/Dwarf-Therapist
 * simplescreenrecorder - http://www.maartenbaert.be/simplescreenrecorder
 
 ## Installing
