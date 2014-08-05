@@ -10,16 +10,16 @@ MY_P="${P/dwarf-therapist/Dwarf-Therapist/}"
 DESCRIPTION="Dwarf Fortress extension to manage dwarves"
 HOMEPAGE="https://github.com/splintermind/Dwarf-Therapist/"
 EGIT_REPO_URI="https://github.com/splintermind/Dwarf-Therapist"
-EGIT_BRANCH="master"
+EGIT_BRANCH="DF2014"
 EGIT_BOOSTRAP=""
 
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="+DF2014"
+IUSE="DF2012"
 
-if use DF2014; then
-	EGIT_BRANCH="DF2014"
+if use DF2012; then
+	EGIT_BRANCH="DF2012"
 fi
 
 DEPEND="
