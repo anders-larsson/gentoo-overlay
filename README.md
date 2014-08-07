@@ -8,11 +8,16 @@ The following packages are available in this overlay:
 * dwarf-therapist - https://github.com/splintermind/Dwarf-Therapist
 * simplescreenrecorder - http://www.maartenbaert.be/simplescreenrecorder
 
-## Installing
-This overlay is not official and not available in layman.
-To use this repository you can either add it using layman or add it manually to your layman configuration.
 
-Please read https://wiki.gentoo.org/wiki/Layman for general instructs on how layman works.
+## Warning
+
+This overlay is not official and not available in layman (as an official source).
+
+**Use ebuilds supplied in this repository on your own risk**. They've been tested on my own system setup (~amd64) and (most likely) tested on virtual systems (amd64 and x86).
+
+## Installing
+
+Please read https://wiki.gentoo.org/wiki/Layman for more information regarding layman.
 
 ### Add it using layman:
 
