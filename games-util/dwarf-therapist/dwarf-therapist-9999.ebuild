@@ -56,12 +56,6 @@ pkg_setup()
 		eerror
 	fi
 }
-# Patch paths to config files. This should be fixed by upstream.
-# Issue: https://github.com/splintermind/Dwarf-Therapist/issues/30
-src_prepare()
-{
-	epatch "${FILESDIR}/fix_config_paths.diff"
-}
 
 src_configure()
 {
