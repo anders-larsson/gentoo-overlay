@@ -43,7 +43,9 @@ DEPEND="
 	media-libs/libpng
 	dev-libs/libpcre
 	x11-libs/libXext
-	x11-libs/libxcb"
+	x11-libs/libxcb
+	dev-texlive/texlive-latex
+	dev-texlive/texlive-latexextra"
 RDEPEND="${DEPEND}"
 
 pkg_setup()
