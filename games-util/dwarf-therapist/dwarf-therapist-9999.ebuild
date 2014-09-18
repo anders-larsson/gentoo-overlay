@@ -4,25 +4,35 @@
 
 EAPI=5
 
-inherit git-2 qmake-utils
+inherit qmake-utils
 
-MY_P="${P/dwarf-therapist/Dwarf-Therapist/}"
+if [[ ${PV} = 9999 ]]; then
+	inherit git-2
+fi
+
 DESCRIPTION="Dwarf Fortress extension to manage dwarves"
-HOMEPAGE="https://github.com/splintermind/Dwarf-Therapist/"
-EGIT_REPO_URI="https://github.com/splintermind/Dwarf-Therapist"
-EGIT_BRANCH="DF2014"
-EGIT_BOOSTRAP=""
-
+HOMEPAGE="http://github.com/splintermind/${PN}"
 LICENSE="MIT"
+MY_P="${P/dwarf-therapist/Dwarf-Therapist}"
+S="${WORKDIR}/${MY_P}"
+
+if [[ ${PV} = 9999 ]]; then
+	EGIT_REPO_URI="https://github.com/splintermind/${PN}"
+	EGIT_BOOTSTRAP=""
+	EGIT_BRANCH="DF2014"
+	if use DF2012; then
+		EGIT_BRANCH="DF2012"
+	fi
+	KEYWORDS=""
+else
+	SRC_URI="https://github.com/splintermind/${PN}/archive/v${PV}.tar.gz"
+	KEYWORDS="~amd64 ~x86"
+fi
+
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
 IUSE="DF2012 +qt4 qt5 doc"
 REQUIRED_USE="^^ ( qt4 qt5 )"
 DOCS=( README.rst LICENSE.txt CHANGELOG.txt )
-
-if use DF2012; then
-	EGIT_BRANCH="DF2012"
-fi
 
 DEPEND="
 	qt4? (
@@ -86,9 +96,9 @@ src_install()
 	if use doc; then
 		dodoc "doc/Dwarf Therapist.pdf"
 		dodir /usr/share/dwarftherapist/doc/
-		dosym "/usr/share/doc/dwarf-therapist-9999/Dwarf Therapist.pdf" \
+		dosym "/usr/share/doc/dwarf-therapist-${PV}/Dwarf Therapist.pdf" \
 			"/usr/share/doc/dwarftherapist/Dwarf Therapist.pdf"
-		dosym "/usr/share/doc/dwarf-therapist-9999/Dwarf Therapist.pdf" \
+		dosym "/usr/share/doc/dwarf-therapist-${PV}/Dwarf Therapist.pdf" \
 			"/usr/share/dwarftherapist/doc/Therapist Manual.pdf"
 	fi
 }
