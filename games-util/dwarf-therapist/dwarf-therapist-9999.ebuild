@@ -16,8 +16,9 @@ EGIT_BOOSTRAP=""
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="DF2012 +qt4 qt5"
+IUSE="DF2012 +qt4 qt5 doc"
 REQUIRED_USE="^^ ( qt4 qt5 )"
+DOCS=( README.rst LICENSE.txt CHANGELOG.txt )
 
 if use DF2012; then
 	EGIT_BRANCH="DF2012"
@@ -38,14 +39,16 @@ DEPEND="
 		dev-qt/qtnetwork:5
 		dev-qt/qtwidgets:5
 	)
+	doc? (
+		dev-texlive/texlive-latex
+		dev-texlive/texlive-latexextra
+	)
 	sys-libs/zlib
 	dev-libs/openssl
 	media-libs/libpng
 	dev-libs/libpcre
 	x11-libs/libXext
-	x11-libs/libxcb
-	dev-texlive/texlive-latex
-	dev-texlive/texlive-latexextra"
+	x11-libs/libxcb"
 RDEPEND="${DEPEND}"
 
 pkg_setup()
@@ -56,6 +59,14 @@ pkg_setup()
 		eerror "Building dwarf-therapist with qt4 support will fail (not supported)."
 		eerror "Add use flag qt5 instead."
 		eerror
+	fi
+
+	if ! use doc; then
+		einfo
+		einfo "Use flag doc is disabled. Dwarf Therapist's pdf manual will not be built."
+		einfo "If you want to use the manual you have to download it manual and place it it as /usr/share/dwarftherapist/doc/Therapist Manual.pdf"
+		einfo "http://dffd.wimbli.com/file.php?id=7889"
+		einfo
 	fi
 }
 
@@ -71,4 +82,13 @@ src_configure()
 src_install()
 {
 	INSTALL_ROOT=${D} emake install
+	dodoc ${DOCS[@]}
+	if use doc; then
+		dodoc "doc/Dwarf Therapist.pdf"
+		dodir /usr/share/dwarftherapist/doc/
+		dosym "/usr/share/doc/dwarf-therapist-9999/Dwarf Therapist.pdf" \
+			"/usr/share/doc/dwarftherapist/Dwarf Therapist.pdf"
+		dosym "/usr/share/doc/dwarf-therapist-9999/Dwarf Therapist.pdf" \
+			"/usr/share/dwarftherapist/doc/Therapist Manual.pdf"
+	fi
 }
