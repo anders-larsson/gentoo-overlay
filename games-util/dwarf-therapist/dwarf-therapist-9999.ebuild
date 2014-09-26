@@ -20,9 +20,6 @@ if [[ ${PV} = 9999 ]]; then
 	EGIT_REPO_URI="https://github.com/splintermind/${PN}"
 	EGIT_BOOTSTRAP=""
 	EGIT_BRANCH="DF2014"
-	if use DF2012; then
-		EGIT_BRANCH="DF2012"
-	fi
 	KEYWORDS=""
 else
 	SRC_URI="https://github.com/splintermind/${PN}/archive/v${PV}.tar.gz"
@@ -30,7 +27,7 @@ else
 fi
 
 SLOT="0"
-IUSE="DF2012 +qt4 qt5 doc"
+IUSE="+qt4 qt5 doc"
 REQUIRED_USE="^^ ( qt4 qt5 )"
 DOCS=( README.rst LICENSE.txt CHANGELOG.txt )
 
@@ -63,14 +60,6 @@ RDEPEND="${DEPEND}"
 
 pkg_setup()
 {
-	if ( use DF2012 && use qt4 ) ; then
-		eerror
-		eerror "dwarf-therapist[DF2012] can only be built with qt5."
-		eerror "Building dwarf-therapist with qt4 support will fail (not supported)."
-		eerror "Add use flag qt5 instead."
-		eerror
-	fi
-
 	if ! use doc; then
 		einfo
 		einfo "Use flag doc is disabled. Dwarf Therapist's pdf manual will not be built."
