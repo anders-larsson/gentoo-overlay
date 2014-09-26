@@ -86,8 +86,6 @@ src_install()
 		dodoc "doc/Dwarf Therapist.pdf"
 		dodir /usr/share/dwarftherapist/doc/
 		dosym "/usr/share/doc/dwarf-therapist-${PV}/Dwarf Therapist.pdf" \
-			"/usr/share/doc/dwarftherapist/Dwarf Therapist.pdf"
-		dosym "/usr/share/doc/dwarf-therapist-${PV}/Dwarf Therapist.pdf" \
-			"/usr/share/dwarftherapist/doc/Therapist Manual.pdf"
+			"/usr/share/dwarftherapist/Dwarf Therapist.pdf"
 	fi
 }
