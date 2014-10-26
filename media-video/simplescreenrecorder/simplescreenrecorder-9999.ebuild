@@ -77,8 +77,8 @@ multilib_src_configure() {
 	local myconf=(
 		--enable-dependency-tracking
 		$(multilib_native_use_enable debug assert)
-		$(multilib_native_use_enable pulseaudio)
-		$(multilib_native_use_enable jack)
+		$(multilib_native_use_with pulseaudio)
+		$(multilib_native_use_with jack)
 	)
 
 	# libav doesn't have AVFrame::channels
