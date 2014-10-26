@@ -29,8 +29,8 @@ SLOT="0"
 IUSE="debug jack mp3 pulseaudio theora vorbis vpx x264"
 
 RDEPEND="
-	dev-qt/qtcore
-	dev-qt/qtgui
+	>=dev-qt/qtcore-4.8.0:4
+	>=dev-qt/qtgui-4.8.0:4
 	virtual/glu[${MULTILIB_USEDEP}]
 	media-libs/alsa-lib
 	media-libs/mesa[${MULTILIB_USEDEP}]
