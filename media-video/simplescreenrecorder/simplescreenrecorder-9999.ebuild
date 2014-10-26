@@ -26,11 +26,20 @@ else
 fi
 
 SLOT="0"
-IUSE="debug jack mp3 pulseaudio theora vorbis vpx x264"
+IUSE="debug jack mp3 pulseaudio theora vorbis vpx x264 +qt4 qt5"
+REQUIRED_USE="^^ ( qt4 qt5 )"
 
 RDEPEND="
-	>=dev-qt/qtcore-4.8.0:4
-	>=dev-qt/qtgui-4.8.0:4
+	qt4? (
+		>=dev-qt/qtcore-4.8.0:4
+		>=dev-qt/qtgui-4.8.0:4
+	)
+	qt5? (
+		>=dev-qt/qtcore-5.1.0:5
+		>=dev-qt/qtgui-5.1.0:5
+		>=dev-qt/qtwidgets-5.1.0:5
+		>=dev-qt/qtx11extras-5.1.0:5
+	)
 	virtual/glu[${MULTILIB_USEDEP}]
 	media-libs/alsa-lib
 	media-libs/mesa[${MULTILIB_USEDEP}]
@@ -79,6 +88,7 @@ multilib_src_configure() {
 		$(multilib_native_use_enable debug assert)
 		$(multilib_native_use_with pulseaudio)
 		$(multilib_native_use_with jack)
+		$(multilib_native_use_with qt5)
 	)
 
 	# libav doesn't have AVFrame::channels
