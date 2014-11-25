@@ -4,7 +4,7 @@
 
 EAPI="5"
 
-inherit autotools multilib-minimal
+inherit autotools flag-o-matic multilib-minimal
 
 if [[ ${PV} = 9999 ]]; then
 	inherit git-2
@@ -79,6 +79,11 @@ pkg_setup() {
 		ewarn "record videos with x264."
 		ewarn
 	fi
+
+	# QT requires -fPIC. Compile fails otherwise.
+	# Recently removed from the default compile options upstream
+	# https://github.com/MaartenBaert/ssr/commit/25fe1743058f0d1f95f6fbb39014b6ac146b5180
+	append-flags -fPIC
 }
 
 multilib_src_configure() {
