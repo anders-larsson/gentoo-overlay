@@ -62,9 +62,9 @@ pkg_setup()
 {
 	if ! use doc; then
 		einfo
-		einfo "Use flag doc is disabled. Dwarf Therapist's pdf manual will not be built."
-		einfo "If you want to use the manual you have to download it manual and place it it as /usr/share/dwarftherapist/doc/Therapist Manual.pdf"
-		einfo "http://dffd.wimbli.com/file.php?id=7889"
+		einfo "Use flag doc not set. Manual will not be built."
+		einfo "Download it and save it as /usr/share/dwarftherapist/doc/Therapist Manual.pdf if you want it."
+		einfo "http://dffd.wimbli.com/file.php?id=7889 (might be outdated)"
 		einfo
 	fi
 }
