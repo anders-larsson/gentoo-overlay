@@ -63,7 +63,7 @@ pkg_setup()
 	if ! use doc; then
 		einfo
 		einfo "Use flag doc not set. Manual will not be built."
-		einfo "Download it and save it as /usr/share/dwarftherapist/doc/Therapist Manual.pdf if you want it."
+		einfo "Download it and save it as /usr/share/dwarftherapist/Therapist Manual.pdf if you want it."
 		einfo "http://dffd.wimbli.com/file.php?id=7889 (might be outdated)"
 		einfo
 	fi
@@ -84,7 +84,6 @@ src_install()
 	dodoc ${DOCS[@]}
 	if use doc; then
 		dodoc "doc/Dwarf Therapist.pdf"
-		dodir /usr/share/dwarftherapist/doc/
 		dosym "/usr/share/doc/dwarf-therapist-${PV}/Dwarf Therapist.pdf" \
 			"/usr/share/dwarftherapist/Dwarf Therapist.pdf"
 	fi
