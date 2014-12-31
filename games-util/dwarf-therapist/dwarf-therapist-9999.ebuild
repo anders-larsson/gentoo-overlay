@@ -71,10 +71,14 @@ pkg_setup()
 
 src_configure()
 {
+	# Set prefix to /usr. Defaults is /usr/local
+	myconf=(
+		PREFIX=/usr
+	)
 	if use qt4; then
-		eqmake4
+		eqmake4 ${myconf[@]}
 	elif use qt5; then
-		eqmake5
+		eqmake5 ${myconf[@]}
 	fi
 }
 
