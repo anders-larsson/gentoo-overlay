@@ -5,6 +5,7 @@ Overlay for Gentoo/Linux packages
 
 The following packages are available in this overlay:
 
+* acquisition - https://github.com/xyzz/acquisition
 * dwarf-therapist - https://github.com/splintermind/Dwarf-Therapist
 * simplescreenrecorder - http://www.maartenbaert.be/simplescreenrecorder
 
