@@ -12,7 +12,7 @@ fi
 
 DESCRIPTION="Acquisition is an inventory management tool for Path of Exile"
 HOMEPAGE="http://github.com/xyzz/${PN}"
-LICENSE="GPL"
+LICENSE="GPL-3"
 
 if [[ ${PV} = 9999 ]]; then
 	EGIT_REPO_URI="https://github.com/xyzz/${PN}"
