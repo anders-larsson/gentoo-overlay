@@ -26,7 +26,7 @@ else
 fi
 
 SLOT="0"
-IUSE="debug jack mp3 pulseaudio theora vorbis vpx x264 +qt4 qt5"
+IUSE="+asm debug jack mp3 pulseaudio theora vorbis vpx x264 +qt4 qt5"
 REQUIRED_USE="^^ ( qt4 qt5 )"
 
 RDEPEND="
@@ -94,6 +94,7 @@ multilib_src_configure() {
 		$(multilib_native_use_with pulseaudio)
 		$(multilib_native_use_with jack)
 		$(multilib_native_use_with qt5)
+		$(use_enable asm x86-asm)
 	)
 
 	# libav doesn't have AVFrame::channels
