@@ -77,6 +77,11 @@ src_configure()
 	)
 	if use qt4; then
 		eqmake4 ${myconf[@]}
+		# Build only works if it's configured with debug_and_release
+		# eqmake4 changes debug_and_release to release. Workaround follows.
+		# https://github.com/anders-larsson/gentoo-overlay/issues/12
+		sed -i 's/CONFIG += release/CONFIG += debug_and_release/' \
+			dwarftherapist.pro
 	elif use qt5; then
 		eqmake5 ${myconf[@]}
 	fi
