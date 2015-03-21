@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<longdescription lang="en">
+		Acquisition is an inventory management tool for Path of Exile.
+	</longdescription>
+	<use>
+	</use>
+</pkgmetadata>

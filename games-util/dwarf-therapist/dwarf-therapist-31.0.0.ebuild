@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
@@ -51,8 +51,8 @@ DEPEND="
 		dev-texlive/texlive-latexextra
 	)
 	sys-libs/zlib
-	dev-libs/openssl
-	media-libs/libpng
+	dev-libs/openssl:0
+	media-libs/libpng:0
 	dev-libs/libpcre
 	x11-libs/libXext
 	x11-libs/libxcb"

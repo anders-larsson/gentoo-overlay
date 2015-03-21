@@ -1,10 +1,10 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
 EAPI="5"
 
-inherit autotools flag-o-matic multilib-minimal
+inherit flag-o-matic multilib-minimal
 
 if [[ ${PV} = 9999 ]]; then
 	inherit git-2
@@ -49,7 +49,7 @@ RDEPEND="
 	jack? ( media-sound/jack-audio-connection-kit )
 	pulseaudio? ( media-sound/pulseaudio )
 	|| (
-		media-video/ffmpeg[vorbis?,vpx?,x264?,mp3?,theora?]
+		media-video/ffmpeg:0[vorbis?,vpx?,x264?,mp3?,theora?]
 		media-video/libav[vorbis?,vpx?,x264?,mp3?,theora?]
 	)
 	"
