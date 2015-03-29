@@ -1,3 +1,5 @@
+**Current build status:** [![Build Status](https://travis-ci.org/anders-larsson/gentoo-overlay.svg)](https://travis-ci.org/anders-larsson/gentoo-overlay)
+
 gentoo-overlay
 ==============
 
