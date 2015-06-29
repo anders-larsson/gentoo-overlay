@@ -14,29 +14,12 @@ The following packages are available in this overlay:
 
 ## Warning
 
-This overlay is not official and not available in layman (as an official source).
+This overlay is not official but is available in layman's repository.
 
 **Use ebuilds supplied in this repository on your own risk**. They've been tested on my own system setup (~amd64) and (most likely) tested on virtual systems (amd64 and x86).
 
 ## Installing
 
-Please read https://wiki.gentoo.org/wiki/Layman for more information regarding layman.
-
-### Add it using layman:
-
-    layman -f -o http://anders-larsson.github.io/gentoo-overlay/repositories.xml -a anders-larsson
-
-### Add it manually:
-
-Edit /etc/layman/layman.cfg and include the following line for "overlays".
-
-    http://anders-larsson.github.io/gentoo-overlay/repositories.xml
-
-Should look something similar to the lines below if you don't use any other layman overlays.
-
-    overlays  : http://www.gentoo.org/proj/en/overlays/repositories.xml
-                http://anders-larsson.github.io/gentoo-overlay/repositories.xml
-
-Finally add the layman overlay using the command below.
+First time using layman? See https://wiki.gentoo.org/wiki/Layman
 
     layman -a anders-larsson
