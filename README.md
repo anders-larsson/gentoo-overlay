@@ -9,8 +9,8 @@ The following packages are available in this overlay:
 
 * acquisition - https://github.com/xyzz/acquisition
 * dwarf-therapist - https://github.com/splintermind/Dwarf-Therapist
+* keepassx (forked from qt overlay, qt5 support)
 * simplescreenrecorder - http://www.maartenbaert.be/simplescreenrecorder
-
 
 ## Warning
 
