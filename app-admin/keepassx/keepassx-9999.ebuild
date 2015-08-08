@@ -29,7 +29,10 @@ RDEPEND="dev-libs/libgcrypt:=
 	)
 	qt5? (
 		dev-qt/qtcore:5
+		dev-qt/qtconcurrent:5
 		dev-qt/qtgui:5
+		dev-qt/qtwidgets:5
+		dev-qt/linguist-tools:5
 	)
 	sys-libs/zlib
 "
@@ -42,7 +45,11 @@ DEPEND="${RDEPEND}
 
 src_prepare() {
 	 use test || \
-		 sed -e "/^set(QT_REQUIRED_MODULES/s/QtTest//" -i CMakeLists.txt || die
+		if use qt4; then
+			sed -e "/^set(QT_REQUIRED_MODULES/s/QtTest//" -i CMakeLists.txt || die
+		elif use qt5; then
+			sed -e "/^find_package(Qt5Test/d" -i CMakeLists.txt || die
+		fi
 }
 
 src_configure() {
