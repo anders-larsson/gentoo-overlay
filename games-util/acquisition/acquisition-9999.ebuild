@@ -24,23 +24,36 @@ else
 fi
 
 SLOT="0"
-IUSE=""
+IUSE="test"
 
-DEPEND="
+RDEPEND="
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
 	dev-qt/qtnetwork:5
-	dev-qt/qttest:5
 	dev-qt/qtwebkit:5
 	dev-qt/qtwidgets:5
 	"
-RDEPEND="${DEPEND}"
+DEPEND="${DEPEND}
+	test? (
+		dev-qt/qttest:5
+	)
+	"
 
 pkg_setup() {
 	if [[ $(tc-getCXX) == *g++ && ($(gcc-version) < 4.8) ]]; then
 		eerror "dev-lang/gcc-4.8 or newer is required to build acquisition"
 		die "Missing c++11 feature"
 	fi
+}
+
+src_prepare() {
+	 if ! use test; then
+		 sed -e "/^QT/ s/testlib//" \
+			 -e "/\W*test\//d" -i acquisition.pro || die
+		 sed -e "/QCommandLineOption/ s/option_test\S*//" \
+			 -e "/testmain.h/d" -e "/option_test/d" \
+			 -e "/test_main/d" -i src/main.cpp || die
+	 fi
 }
 
 src_configure() {
