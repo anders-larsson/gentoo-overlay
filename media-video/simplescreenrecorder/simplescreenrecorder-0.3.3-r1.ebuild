@@ -31,14 +31,14 @@ REQUIRED_USE="^^ ( qt4 qt5 )"
 
 RDEPEND="
 	qt4? (
-		>=dev-qt/qtcore-4.8.0:4
-		>=dev-qt/qtgui-4.8.0:4
+		dev-qt/qtcore:4
+		dev-qt/qtgui:4
 	)
 	qt5? (
-		>=dev-qt/qtcore-5.1.0:5
-		>=dev-qt/qtgui-5.1.0:5
-		>=dev-qt/qtwidgets-5.1.0:5
-		>=dev-qt/qtx11extras-5.1.0:5
+		dev-qt/qtcore:5
+		dev-qt/qtgui:5
+		dev-qt/qtwidgets:5
+		dev-qt/qtx11extras:5
 	)
 	virtual/glu[${MULTILIB_USEDEP}]
 	media-libs/alsa-lib
