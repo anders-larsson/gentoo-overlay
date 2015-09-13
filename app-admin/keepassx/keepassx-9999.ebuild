@@ -16,40 +16,25 @@ EGIT_REPO_URI=(
 LICENSE="LGPL-2.1 GPL-2 GPL-3"
 SLOT="0"
 KEYWORDS=""
-IUSE="debug test +qt4 qt5"
-
-if use qt5; then
-	EGIT_BRANCH="qt5"
-fi
+IUSE="debug test"
 
 RDEPEND="dev-libs/libgcrypt:=
-	qt4? (
-		dev-qt/qtcore:4[qt3support]
-		dev-qt/qtgui:4[qt3support]
-	)
-	qt5? (
-		dev-qt/qtcore:5
-		dev-qt/qtconcurrent:5
-		dev-qt/qtgui:5
-		dev-qt/qtwidgets:5
-		dev-qt/linguist-tools:5
-	)
+	>=dev-qt/qtcore-5.2:5
+	>=dev-qt/qtconcurrent-5.2:5
+	>=dev-qt/qtgui-5.2:5
+	>=dev-qt/qtwidgets-5.2:5
+	>=dev-qt/linguist-tools-5.2:5
 	sys-libs/zlib
 "
 DEPEND="${RDEPEND}
 	test? (
-		qt4? ( dev-qt/qttest:4 )
-		qt5? ( dev-qt/qttest:5 )
+		>=dev-qt/qttest-5.2:5
 	)
 "
 
 src_prepare() {
 	 use test || \
-		if use qt4; then
-			sed -e "/^set(QT_REQUIRED_MODULES/s/QtTest//" -i CMakeLists.txt || die
-		elif use qt5; then
-			sed -e "/^find_package(Qt5Test/d" -i CMakeLists.txt || die
-		fi
+		sed -e "/^find_package(Qt5Test/d" -i CMakeLists.txt || die
 }
 
 src_configure() {
