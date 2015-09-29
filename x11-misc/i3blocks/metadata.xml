@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<longdescription lang="en">
+		i3blocks is a highly flexible status line for the i3 window manager. It handles clicks, signals and language-agnostic user scripts.
+	</longdescription>
+	<use>
+	</use>
+</pkgmetadata>
