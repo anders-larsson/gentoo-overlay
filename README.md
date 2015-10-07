@@ -11,6 +11,7 @@ The following packages are available in this overlay:
 * dwarf-therapist - https://github.com/splintermind/Dwarf-Therapist
 * i3blocks - https://github.com/vivien/i3blocks
 * simplescreenrecorder - http://www.maartenbaert.be/simplescreenrecorder
+* playerctl - https://github.com/acrisci/playerctl
 
 ## Warning
 
