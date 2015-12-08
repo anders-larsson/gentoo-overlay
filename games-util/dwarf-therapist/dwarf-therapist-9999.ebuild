@@ -19,7 +19,7 @@ S="${WORKDIR}/${MY_P}"
 if [[ ${PV} = 9999 ]]; then
 	EGIT_REPO_URI="https://github.com/splintermind/${PN}"
 	EGIT_BOOTSTRAP=""
-	EGIT_BRANCH="DF2014"
+	EGIT_BRANCH="DF2016"
 	KEYWORDS=""
 else
 	SRC_URI="https://github.com/splintermind/${PN}/archive/v${PV}.tar.gz"
