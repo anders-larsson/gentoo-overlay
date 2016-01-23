@@ -33,7 +33,7 @@ RDEPEND="
 	dev-qt/qtwebkit:5
 	dev-qt/qtwidgets:5
 	"
-DEPEND="${DEPEND}
+DEPEND="${RDEPEND}
 	test? (
 		dev-qt/qttest:5
 	)
