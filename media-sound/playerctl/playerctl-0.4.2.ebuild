@@ -10,7 +10,7 @@ if [[ ${PV} = 9999 ]]; then
 	inherit git-2
 fi
 
-DESCRIPTION="Command-line utility to control media players implementing MPRIS D-Bus Interface Specification"
+DESCRIPTION="Command-line utility to control media players using MPRIS"
 HOMEPAGE="https://github.com/acrisci/playerctl"
 if [[ ${PV} = 9999 ]]; then
 	EGIT_REPO_URI="https://github.com/acrisci/${PN}"
