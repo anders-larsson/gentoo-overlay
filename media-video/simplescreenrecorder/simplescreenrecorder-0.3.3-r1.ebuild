@@ -41,7 +41,7 @@ RDEPEND="
 		dev-qt/qtx11extras:5
 	)
 	virtual/glu[${MULTILIB_USEDEP}]
-	media-libs/alsa-lib
+	media-libs/alsa-lib:*
 	media-libs/mesa[${MULTILIB_USEDEP}]
 	x11-libs/libX11[${MULTILIB_USEDEP}]
 	x11-libs/libXext
