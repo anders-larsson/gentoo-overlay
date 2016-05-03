@@ -47,13 +47,13 @@ pkg_setup() {
 }
 
 src_prepare() {
-	 if ! use test; then
-		 sed -e "/^QT/ s/testlib//" \
-			 -e "/\W*test\//d" -i acquisition.pro || die
-		 sed -e "/QCommandLineOption/ s/option_test\S*//" \
-			 -e "/testmain.h/d" -e "/option_test/d" \
-			 -e "/test_main/d" -i src/main.cpp || die
-	 fi
+	if ! use test; then
+		sed -e "/^QT/ s/testlib//" \
+			-e "/\W*test\//d" -i acquisition.pro || die
+		sed -e "/QCommandLineOption/ s/option_test\S*//" \
+			-e "/testmain.h/d" -e "/option_test/d" \
+			-e "/test_main/d" -i src/main.cpp || die
+	fi
 }
 
 src_configure() {
