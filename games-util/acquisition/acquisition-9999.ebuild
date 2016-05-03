@@ -27,6 +27,7 @@ SLOT="0"
 IUSE="test"
 
 RDEPEND="
+	dev-db/sqlite
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
 	dev-qt/qtnetwork:5
@@ -47,6 +48,7 @@ pkg_setup() {
 }
 
 src_prepare() {
+	sed -e "/INCLUDEPATH/ s/deps\/boost-header-only//" -i acquisition.pro || die
 	if ! use test; then
 		sed -e "/^QT/ s/testlib//" \
 			-e "/\W*test\//d" -i acquisition.pro || die
