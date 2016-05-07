@@ -35,6 +35,7 @@ RDEPEND="
 	dev-qt/qtwidgets:5
 	"
 DEPEND="${RDEPEND}
+	dev-libs/boost
 	test? (
 		dev-qt/qttest:5
 	)
