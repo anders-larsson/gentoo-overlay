@@ -4,6 +4,8 @@
 
 EAPI=5
 
+inherit eutils
+
 DESCRIPTION="All-in-one voice and text chat"
 
 HOMEPAGE="https://discordapp.com/"
@@ -45,4 +47,7 @@ src_install() {
 	doexe DiscordCanary
 
 	dosym $destdir/DiscordCanary /usr/bin/discord
+	make_desktop_entry discord Discord \
+		"/opt/discord/discord.png" \
+		Network
 }
