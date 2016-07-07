@@ -11,6 +11,7 @@ DESCRIPTION="All-in-one voice and text chat"
 HOMEPAGE="https://discordapp.com/"
 
 SRC_URI="https://cdn-canary.discordapp.com/apps/linux/${PV}/discord-canary-${PV}.tar.gz"
+RESTRICT="mirror"
 KEYWORDS="~amd64"
 
 SLOT="0"
