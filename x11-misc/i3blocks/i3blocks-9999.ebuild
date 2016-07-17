@@ -20,13 +20,20 @@ else
 fi
 
 SLOT="0"
+IUSE="doc"
 LICENSE="GPL-3"
 RDEPEND="x11-wm/i3"
 DEPEND="${RDEPEND}
-	app-text/pandoc
+	doc? (
+		app-text/pandoc
+	)
 	"
 
 src_install() {
 	emake DESTDIR="${D}" PREFIX="/usr" install
+
+	if use doc; then
+		emake DESTDIR="${D}" PREFIX="/usr" install-man
+	fi
 
 }
