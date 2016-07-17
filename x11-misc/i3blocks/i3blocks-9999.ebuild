@@ -23,9 +23,10 @@ SLOT="0"
 LICENSE="GPL-3"
 RDEPEND="x11-wm/i3"
 DEPEND="${RDEPEND}
-	app-text/ronn
+	app-text/pandoc
 	"
 
 src_install() {
 	emake DESTDIR="${D}" PREFIX="/usr" install
+
 }
