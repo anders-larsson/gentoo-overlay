@@ -73,6 +73,13 @@ src_configure()
 	myconf=(
 		PREFIX=/usr
 	)
+
+	# Remove pdflatex code if use-flag doc is not set
+	if ! use doc; then
+		sed -i '/Checking for pdflatex.../,/\}/d' \
+			dwarftherapist.pro
+	fi
+
 	if use qt4; then
 		eqmake4 ${myconf[@]}
 		# Build only works if it's configured with debug_and_release
@@ -83,6 +90,7 @@ src_configure()
 	elif use qt5; then
 		eqmake5 ${myconf[@]}
 	fi
+
 }
 
 src_install()
