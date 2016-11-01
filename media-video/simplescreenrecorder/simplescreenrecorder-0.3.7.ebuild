@@ -7,7 +7,7 @@ EAPI="5"
 inherit flag-o-matic multilib-minimal
 
 if [[ ${PV} = 9999 ]]; then
-	inherit git-2
+	inherit git-r3
 fi
 
 DESCRIPTION="A Simple Screen Recorder"
