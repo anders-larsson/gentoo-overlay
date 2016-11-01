@@ -2,12 +2,12 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 inherit autotools
 
 if [[ ${PV} = 9999 ]]; then
-	inherit git-2
+	inherit git-r3
 fi
 
 DESCRIPTION="Command-line utility to control media players using MPRIS"
@@ -30,6 +30,7 @@ DEPEND="${RDEPEND}
 	"
 
 src_prepare() {
+	default
 	gtkdocize || die
 	eautoreconf
 }
