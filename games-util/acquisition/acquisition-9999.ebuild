@@ -2,12 +2,12 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 inherit toolchain-funcs qmake-utils
 
 if [[ ${PV} = 9999 ]]; then
-	inherit git-2
+	inherit git-r3
 fi
 
 DESCRIPTION="Acquisition is an inventory management tool for Path of Exile"
@@ -49,6 +49,7 @@ pkg_setup() {
 }
 
 src_prepare() {
+	default
 	sed -e "/INCLUDEPATH/ s/deps\/boost-header-only//" -i acquisition.pro || die
 	if ! use test; then
 		sed -e "/^QT/ s/testlib//" \
