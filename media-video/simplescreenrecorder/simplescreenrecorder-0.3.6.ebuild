@@ -14,7 +14,6 @@ DESCRIPTION="A Simple Screen Recorder"
 HOMEPAGE="http://www.maartenbaert.be/simplescreenrecorder"
 LICENSE="GPL-3"
 PKGNAME="ssr"
-S=${WORKDIR}/${PKGNAME}-${PV}
 if [[ ${PV} = 9999 ]]; then
 	EGIT_REPO_URI="git://github.com/MaartenBaert/${PKGNAME}.git
 		https://github.com/MaartenBaert/${PKGNAME}.git"
@@ -23,6 +22,8 @@ if [[ ${PV} = 9999 ]]; then
 else
 	SRC_URI="https://github.com/MaartenBaert/${PKGNAME}/archive/${PV}.tar.gz"
 	KEYWORDS="~amd64 ~x86"
+
+	S=${WORKDIR}/${PKGNAME}-${PV}
 fi
 
 SLOT="0"
