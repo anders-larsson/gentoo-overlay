@@ -2,19 +2,17 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 inherit qmake-utils
 
 if [[ ${PV} = 9999 ]]; then
-	inherit git-2
+	inherit git-r3
 fi
 
 DESCRIPTION="Dwarf Fortress extension to manage dwarves"
 HOMEPAGE="http://github.com/splintermind/${PN}"
 LICENSE="MIT"
-MY_P="${P/dwarf-therapist/Dwarf-Therapist}"
-S="${WORKDIR}/${MY_P}"
 
 if [[ ${PV} = 9999 ]]; then
 	EGIT_REPO_URI="https://github.com/splintermind/${PN}"
@@ -24,6 +22,9 @@ if [[ ${PV} = 9999 ]]; then
 else
 	SRC_URI="https://github.com/splintermind/${PN}/archive/v${PV}.tar.gz"
 	KEYWORDS="~amd64 ~x86"
+
+	MY_P="${P/dwarf-therapist/Dwarf-Therapist}"
+	S="${WORKDIR}/${MY_P}"
 fi
 
 SLOT="0"
