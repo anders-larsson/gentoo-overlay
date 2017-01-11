@@ -35,6 +35,14 @@ DEPEND="${RDEPEND}
 
 S=${WORKDIR}/Discord
 
+pkg_setup() {
+	einfo "Discord has been released officially and they moved back to version"
+	einfo "0.0.1 hence the version is back at 0.0.1."
+	einfo "If you moved from the canary builds: Configuration files has been"
+	einfo "moved from ~/.config/discordcanary to ~/.config/discord and will"
+	einfo "require you to sign in again."
+}
+
 src_install() {
 	local destdir="/opt/${PN}"
 
