@@ -34,8 +34,3 @@ src_prepare() {
 	gtkdocize || die
 	eautoreconf
 }
-
-src_compile() {
-	# Build fails on anything higher than -j1
-	emake -j1
-}
