@@ -68,17 +68,3 @@ src_configure()
 
 	cmake-utils_src_configure
 }
-
-src_install()
-{
-	cmake-utils_src_install
-	# Shared files installed into /usr/share/dwarftherapist. Application looks
-	# for the files layout files in /usr/share/dwarf-therapist.
-	dosym "/usr/share/dwarftherapist" \
-		"/usr/share/dwarf-therapist" || die
-
-	if use doc; then
-		dosym "/usr/share/doc/dwarftherapist/Dwarf Therapist.pdf" \
-			"/usr/share/dwarftherapist/Dwarf Therapist.pdf" || die
-	fi
-}
