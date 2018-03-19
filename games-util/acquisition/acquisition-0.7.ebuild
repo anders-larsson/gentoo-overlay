@@ -1,6 +1,5 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 
@@ -11,7 +10,7 @@ if [[ ${PV} = 9999 ]]; then
 fi
 
 DESCRIPTION="Acquisition is an inventory management tool for Path of Exile"
-HOMEPAGE="http://github.com/xyzz/${PN}"
+HOMEPAGE="https://github.com/xyzz/${PN}"
 LICENSE="GPL-3"
 
 if [[ ${PV} = 9999 ]]; then
