@@ -27,7 +27,6 @@ fi
 
 SLOT="0"
 IUSE="doc"
-DOCS=( README.rst LICENSE.txt CHANGELOG.txt )
 
 DEPEND="
 	dev-qt/qtcore:5
