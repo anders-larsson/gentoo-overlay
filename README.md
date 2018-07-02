@@ -11,7 +11,6 @@ The following packages are available in this overlay:
 * bind-adblock - https://github.com/Trellmor/bind-adblock
 * dwarf-therapist - https://github.com/splintermind/Dwarf-Therapist
 * i3blocks - https://github.com/vivien/i3blocks
-* playerctl - https://github.com/acrisci/playerctl
 
 ## Warning
 
