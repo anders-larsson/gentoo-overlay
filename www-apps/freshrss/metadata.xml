@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<longdescription lang="en">
+		FreshRSS is a self-hosted RSS feed aggregator like Leed or Kriss Feed.
+		It is lightweight, easy to work with, powerful, and customizable.
+		It is a multi-user application with an anonymous reading mode. It supports custom tags. There is an API for (mobile) clients, and a Command-Line Interface.
+	</longdescription>
+	<use>
+	</use>
+</pkgmetadata>
