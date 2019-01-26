@@ -10,6 +10,7 @@ The following packages are available in this overlay:
 * acquisition - https://github.com/xyzz/acquisition
 * bind-adblock - https://github.com/Trellmor/bind-adblock
 * dwarf-therapist - https://github.com/splintermind/Dwarf-Therapist
+* FreshRSS - https://github.com/FreshRSS/FreshRSS
 * i3blocks - https://github.com/vivien/i3blocks
 
 ## Warning
