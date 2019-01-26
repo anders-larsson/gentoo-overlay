@@ -26,7 +26,6 @@ SLOT="0"
 IUSE="test"
 
 RDEPEND="
-	dev-db/sqlite
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
 	dev-qt/qtnetwork:5
