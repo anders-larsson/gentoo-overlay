@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit user eutils webapp vcs-snapshot
+inherit eutils webapp vcs-snapshot
 
 if [[ ${PV} = 9999 ]]; then
 	inherit git-r3
