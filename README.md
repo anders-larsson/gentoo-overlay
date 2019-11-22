@@ -7,6 +7,7 @@ Overlay for Gentoo/Linux packages
 
 The following packages are available in this overlay:
 
+* 389-ds-base - https://directory.fedoraproject.org
 * acquisition - https://github.com/xyzz/acquisition
 * bind-adblock - https://github.com/Trellmor/bind-adblock
 * dwarf-therapist - https://github.com/splintermind/Dwarf-Therapist
