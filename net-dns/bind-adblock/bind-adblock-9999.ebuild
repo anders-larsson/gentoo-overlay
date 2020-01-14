@@ -20,7 +20,7 @@ IUSE=""
 DEPEND=""
 RDEPEND="
 	${DEPEND}
-	|| ( dev-python/pycryptodome[${PYTHON_USEDEP}] dev-python/pycrypto[${PYTHON_USEDEP}] )
+	dev-python/pycryptodome[${PYTHON_USEDEP}]
 	dev-python/dnspython[${PYTHON_USEDEP}]
 	dev-python/requests[${PYTHON_USEDEP}]
 "
