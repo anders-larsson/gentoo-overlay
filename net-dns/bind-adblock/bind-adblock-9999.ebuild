@@ -26,6 +26,19 @@ RDEPEND="
 "
 
 src_install() {
-	dobin update-zonefile.py
-	dodoc README.md
+	exeinto /opt/bind-adblock
+	doexe update-zonefile.py
+
+	insinto /opt/bind-adblock
+	doins README.md blocklist.txt
+
+	dodir /opt/bin
+	dosym ../bind-adblock/update-zonefile.py /opt/bin/update-zonefile.py
+}
+
+pkg_postinst() {
+	echo
+	ewarn "update-zonefile.py has been moved into /opt/bin."
+	ewarn "Please update your cron job accordingly."
+	echo
 }
