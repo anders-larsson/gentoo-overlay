@@ -19,9 +19,9 @@ if [[ ${PV} = 9999 ]]; then
 	KEYWORDS=""
 	S="${WORKDIR}/${PN}"
 else
-	SRC_URI="https://pagure.io/${PN}/archive/${PN}-${PV}/${PN}-${PN}-${PV}.tar.gz"
+	SRC_URI="https://releases.pagure.org/${PN}/${PN}-${PV}.tar.bz2"
 	KEYWORDS="~amd64 ~x86"
-	S="${WORKDIR}/${PN}-${PN}-${PV}"
+	S="${WORKDIR}/${PN}-${PV}"
 fi
 
 LICENSE="GPL-3+"
