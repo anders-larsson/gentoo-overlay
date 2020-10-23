@@ -21,6 +21,7 @@ RDEPEND="
 	dev-python/pycryptodome
 	dev-python/dnspython
 	dev-python/requests
+	dev-python/pyyaml
 "
 
 src_install() {
@@ -28,7 +29,7 @@ src_install() {
 	doexe update-zonefile.py
 
 	insinto /opt/bind-adblock
-	doins README.md blocklist.txt
+	doins README.md blocklist.txt config.yml
 
 	dodir /opt/bin
 	dosym ../bind-adblock/update-zonefile.py /opt/bin/update-zonefile.py
