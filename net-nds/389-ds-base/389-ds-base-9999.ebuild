@@ -84,6 +84,9 @@ src_prepare() {
 
 	append-lfs-flags
 
+	# Ensure prlog.h is found
+	sed -i -e '/#include/ s/nspr4/nspr/' ldap/servers/plugins/sync/sync_persist.c || die
+
 	distutils-r1_src_prepare
 }
 
