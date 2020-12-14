@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+        <longdescription lang="en">
+                RFC 2136 DNS Authenticator plugin for Certbot
+        </longdescription>
+        <use>
+        </use>
+</pkgmetadata>

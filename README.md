@@ -9,6 +9,7 @@ The following packages are available in this overlay:
 
 * 389-ds-base - https://directory.fedoraproject.org
 * bind-adblock - https://github.com/Trellmor/bind-adblock
+* certbot-dns-rfc - https://github.com/certbot/certbot/tree/master/certbot-dns-rfc2136
 * duo_unix - https://github.com/duosecurity/duo_unix
 * dwarf-therapist - https://github.com/splintermind/Dwarf-Therapist
 * FreshRSS - https://github.com/FreshRSS/FreshRSS
