@@ -11,7 +11,7 @@ The following packages are available in this overlay:
 * bind-adblock - https://github.com/Trellmor/bind-adblock
 * certbot-dns-rfc2136 - https://github.com/certbot/certbot/tree/master/certbot-dns-rfc2136
 * duo_unix - https://github.com/duosecurity/duo_unix
-* dwarf-therapist - https://github.com/splintermind/Dwarf-Therapist
+* dwarf-therapist - https://github.com/Dwarf-Therapist/Dwarf-Therapist
 * FreshRSS - https://github.com/FreshRSS/FreshRSS
 
 ## Warning
