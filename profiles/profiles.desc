@@ -1,0 +1,5 @@
+amd64 default/linux/amd64/17.1/hardened/selinux               stable
+amd64 default/linux/amd64/17.1/no-multilib/hardened/selinux   stable
+amd64 default/linux/amd64/17.1/selinux                        stable
+x86   default/linux/x86/17.0/hardened/selinux                 stable
+x86   default/linux/x86/17.0/selinux                          stable

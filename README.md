@@ -13,6 +13,7 @@ The following packages are available in this overlay:
 * duo_unix - https://github.com/duosecurity/duo_unix
 * dwarf-therapist - https://github.com/Dwarf-Therapist/Dwarf-Therapist
 * FreshRSS - https://github.com/FreshRSS/FreshRSS
+* systembus-notify - https://github.com/rfjakob/systembus-notify
 
 ## Warning
 
