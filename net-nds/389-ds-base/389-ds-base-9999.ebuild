@@ -41,6 +41,7 @@ COMMON_DEPEND="
 	dev-libs/libpcre:3
 	dev-perl/NetAddr-IP
 	net-nds/openldap
+	sys-libs/libxcrypt
 	sys-libs/pam
 	sys-libs/zlib
 	dev-libs/libevent
@@ -71,6 +72,10 @@ src_prepare() {
 	use amd64 && export USE_64=1
 
 	eautoreconf
+
+	# Ensure we find crypt.h from sys-libs/libxcrypt
+	append-flags -I/usr/include/xcrypt
+	append-ldflags -L/usr/lib64/xcrypt -Wl,-rpath,/usr/lib64/xcrypt
 
 	append-lfs-flags
 
