@@ -25,11 +25,22 @@ RDEPEND="
 "
 
 src_install() {
+	# Update script to load config file from /etc/bind-adblock for config protection
+	sed -i -e "s@main_conf_file =.*@main_conf_file = '/etc/bind-adblock/config.yml'@" \
+		update-zonefile.py
+	# Update config.yml to include blocklist.txt from /etc/bind-adblock for
+	# config protection
+	sed -i -e 's@blocklist\.txt@/etc/bind-adblock/blocklist.txt@' \
+		config.yml
+
 	exeinto /opt/bind-adblock
 	doexe update-zonefile.py
 
 	insinto /opt/bind-adblock
-	doins README.md blocklist.txt config.yml
+	doins README.md
+
+	insinto /etc/bind-adblock
+	doins blocklist.txt config.yml
 
 	dodir /opt/bin
 	dosym ../bind-adblock/update-zonefile.py /opt/bin/update-zonefile.py
@@ -37,7 +48,7 @@ src_install() {
 
 pkg_postinst() {
 	echo
-	ewarn "update-zonefile.py has been moved into /opt/bin."
+	ewarn "Configuration files (config.yml and blocklist.txt) moved to /etc/bind-adblock"
 	ewarn "Please update your cron job accordingly."
 	echo
 }
