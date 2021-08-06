@@ -7,7 +7,6 @@ Overlay for Gentoo/Linux packages
 
 The following packages are available in this overlay:
 
-* 389-ds-base - https://directory.fedoraproject.org
 * bind-adblock - https://github.com/Trellmor/bind-adblock
 * duo_unix - https://github.com/duosecurity/duo_unix
 * dwarf-therapist - https://github.com/Dwarf-Therapist/Dwarf-Therapist
