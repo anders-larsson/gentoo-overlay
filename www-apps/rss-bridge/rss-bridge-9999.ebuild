@@ -37,6 +37,13 @@ RDEPEND="${DEPEND}"
 need_httpd_cgi  # From webapp.eclass
 
 src_install() {
+	if [[ ${MY_PV} = 9999 ]]; then
+		# Cleanup of files
+		rm -rf .github tests .git
+		rm -f .dockerignore .gitattributes .gitignore Dockerfile composer.* \
+		docker* php* scalingo.json
+	fi
+
 	webapp_src_preinst
 
 	insinto "/${MY_HTDOCSDIR}"
