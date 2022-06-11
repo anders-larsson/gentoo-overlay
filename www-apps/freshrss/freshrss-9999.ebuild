@@ -23,10 +23,13 @@ else
 	S="${WORKDIR}/${PV}"
 fi
 
-IUSE="mysql postgres sqlite"
+IUSE="mysql sqlite postgres +gmp +unicode +iconv +zip +zlib"
 
+# DOM is enabled by flag xml
+# XML is enabled by simplexml
+# mbstring is enabled by unicode
 DEPEND="
-	dev-lang/php:*[curl,xml,pdo,gmp,json,iconv,zip,mysql?,postgres?,sqlite?]
+	dev-lang/php:*[curl,xml,json,simplexml,session,ctype,pdo,mysql?,sqlite?,postgres?,gmp?,unicode?,iconv?,zip?,zlib?]
 	virtual/httpd-php:*
 "
 
