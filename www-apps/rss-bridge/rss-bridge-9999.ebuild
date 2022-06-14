@@ -25,10 +25,10 @@ else
 	S="${WORKDIR}/${MY_PV}"
 fi
 
-IUSE="zip sqlite"
+IUSE="sqlite"
 
 DEPEND="
-	dev-lang/php:*[ssl,xml,unicode,simplexml,curl,json,filter,zip?,sqlite?]
+	dev-lang/php:*[ssl,xml,unicode,simplexml,curl,json,filter,zip,sqlite?]
 	virtual/httpd-php:*
 "
 
