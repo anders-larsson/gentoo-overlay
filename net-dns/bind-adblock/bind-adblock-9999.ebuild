@@ -22,6 +22,7 @@ RDEPEND="
 	dev-python/dnspython
 	dev-python/requests
 	dev-python/pyyaml
+	dev-python/validators
 "
 
 src_install() {
