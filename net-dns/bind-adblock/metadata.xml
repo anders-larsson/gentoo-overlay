@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<longdescription lang="en">
 		Fetch various blocklists and generate a BIND zone from them.
 		Configure BIND to return NXDOMAIN for ad and tracking domains to stop clients from contacting them.
 	</longdescription>
-	<use>
-	</use>
 </pkgmetadata>
