@@ -1,9 +1,9 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit eutils webapp vcs-snapshot
+inherit webapp vcs-snapshot
 
 if [[ ${PV} = 9999 ]]; then
 	inherit git-r3
@@ -16,17 +16,21 @@ LICENSE="AGPL-3"
 if [[ ${PV} = 9999 ]]; then
 	EGIT_REPO_URI="https://github.com/${PN}/${PN}.git"
 	EGIT_BOOTSTRAP=""
-	KEYWORDS=""
 else
-	SRC_URI="https://github.com/${PN}/${PN}/archive/${PV}.tar.gz"
+	SRC_URI="https://github.com/${PN}/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~x86"
-	S="${WORKDIR}/${PV}"
 fi
 
-IUSE="mysql postgres sqlite"
+IUSE="mysql sqlite postgres +gmp +unicode +iconv +zip +zlib"
 
+# DOM is enabled by flag xml
+# XML is enabled by simplexml
+# mbstring is enabled by unicode
 DEPEND="
-	dev-lang/php:*[curl,xml,pdo,gmp,json,iconv,zip,mysql?,postgres?,sqlite?]
+	|| (
+		<dev-lang/php-8[curl,xml,json,simplexml,session,ctype,pdo,mysql?,sqlite?,postgres?,gmp?,unicode?,iconv?,zip?,zlib?]
+		>=dev-lang/php-8[curl,xml,simplexml,session,ctype,pdo,mysql?,sqlite?,postgres?,gmp?,unicode?,iconv?,zip?,zlib?]
+	)
 	virtual/httpd-php:*
 "
 
