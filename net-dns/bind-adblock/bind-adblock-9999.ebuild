@@ -1,14 +1,14 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit git-r3
 
 DESCRIPTION="Fetch various blocklists and generate a BIND zone from them."
 HOMEPAGE="https://github.com/Trellmor/bind-adblock"
 
-EGIT_REPO_URI="https://github.com/Trellmor/bind-adblock.git"
+EGIT_REPO_URI="https://github.com/Trellmor/${P}.git"
 
 LICENSE="MIT"
 SLOT="0"
@@ -44,11 +44,4 @@ src_install() {
 
 	dodir /opt/bin
 	dosym ../bind-adblock/update-zonefile.py /opt/bin/update-zonefile.py
-}
-
-pkg_postinst() {
-	echo
-	ewarn "Configuration files (config.yml and blocklist.txt) moved to /etc/bind-adblock"
-	ewarn "Please update your cron job accordingly."
-	echo
 }
