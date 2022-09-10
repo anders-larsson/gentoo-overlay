@@ -8,7 +8,7 @@ inherit git-r3
 DESCRIPTION="Fetch various blocklists and generate a BIND zone from them."
 HOMEPAGE="https://github.com/Trellmor/bind-adblock"
 
-EGIT_REPO_URI="https://github.com/Trellmor/${P}.git"
+EGIT_REPO_URI="https://github.com/Trellmor/bind-adblock.git"
 
 LICENSE="MIT"
 SLOT="0"
