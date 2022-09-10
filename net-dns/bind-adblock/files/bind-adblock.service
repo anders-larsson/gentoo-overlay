@@ -1,0 +1,12 @@
+[Unit]
+Description=bind-adblock zone update
+After=network.target
+
+[Service]
+Type=oneshot
+User=named
+Group=named
+ExecStart=/opt/bin/bind-adblock.sh
+
+[Install]
+WantedBy=multi-user.target

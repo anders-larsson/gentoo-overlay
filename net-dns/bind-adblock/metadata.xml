@@ -5,4 +5,8 @@
 		Fetch various blocklists and generate a BIND zone from them.
 		Configure BIND to return NXDOMAIN for ad and tracking domains to stop clients from contacting them.
 	</longdescription>
+	<use>
+		<flag name="network-cron">Adds a cron job which updates zone managed by bind-adblock.</flag>
+		<flag name="systemd">Adds systemd timer which updates zone managed by bind-adblock. Disabled by default.</flag>
+	</use>
 </pkgmetadata>

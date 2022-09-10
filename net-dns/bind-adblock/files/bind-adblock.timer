@@ -1,0 +1,9 @@
+[Unit]
+Description=Daily execution of bind-adblock script, updating rpz zone
+
+[Timer]
+OnCalendar=daily
+Persistent=true
+
+[Install]
+WantedBy=timers.target

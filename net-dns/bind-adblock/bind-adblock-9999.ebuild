@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit git-r3
+inherit git-r3 systemd
 
 DESCRIPTION="Fetch various blocklists and generate a BIND zone from them."
 HOMEPAGE="https://github.com/Trellmor/bind-adblock"
@@ -13,7 +13,7 @@ EGIT_REPO_URI="https://github.com/Trellmor/bind-adblock.git"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE=""
+IUSE="network-cron systemd"
 
 DEPEND=""
 RDEPEND="
@@ -36,6 +36,7 @@ src_install() {
 
 	exeinto /opt/bind-adblock
 	doexe update-zonefile.py
+	doexe "${FILESDIR}/bind-adblock.sh"
 
 	insinto /opt/bind-adblock
 	doins README.md
@@ -43,6 +44,14 @@ src_install() {
 	insinto /etc/bind-adblock
 	doins blocklist.txt config.yml
 
-	dodir /opt/bin
 	dosym ../bind-adblock/update-zonefile.py /opt/bin/update-zonefile.py
+	dosym ../bind-adblock/bind-adblock.sh /opt/bin/bind-adblock.sh
+
+	if use network-cron; then
+		dosym ../../opt/bin/bind-adblock.sh /etc/cron.daily/bind-adblock.sh
+	fi
+
+	if use systemd; then
+		systemd_dounit "${FILESDIR}"/bind-adblock.{service,timer}
+	fi
 }
