@@ -4,6 +4,4 @@
         <longdescription lang="en">
                 Duo Unix includes a PAM module or alternatively a stand alone executable that can be used to protect programs such as SSH or Sudo.
         </longdescription>
-        <use>
-        </use>
 </pkgmetadata>
