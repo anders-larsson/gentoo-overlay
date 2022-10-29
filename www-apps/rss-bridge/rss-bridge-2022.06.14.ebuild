@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit eutils webapp vcs-snapshot
+inherit webapp vcs-snapshot
 
 MY_PV="$(ver_rs 1- -)"
 
