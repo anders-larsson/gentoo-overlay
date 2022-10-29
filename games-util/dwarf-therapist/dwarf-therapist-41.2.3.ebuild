@@ -10,7 +10,7 @@ if [[ ${PV} = 9999 ]]; then
 fi
 
 DESCRIPTION="Dwarf Fortress extension to manage dwarves"
-HOMEPAGE="https://github.com/${PN}/${PN}"
+HOMEPAGE="https://github.com/Dwarf-Therapist/Dwarf-Therapist"
 LICENSE="MIT"
 
 if [[ ${PV} = 9999 ]]; then
