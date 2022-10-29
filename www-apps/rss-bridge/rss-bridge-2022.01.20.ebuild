@@ -18,7 +18,6 @@ LICENSE="Unlicense"
 if [[ ${MY_PV} = 9999 ]]; then
 	EGIT_REPO_URI="https://github.com/RSS-bridge/${PN}.git"
 	EGIT_BOOTSTRAP=""
-	KEYWORDS=""
 else
 	SRC_URI="https://github.com/RSS-bridge/${PN}/archive/${MY_PV}.tar.gz"
 	KEYWORDS="~amd64 ~x86"
