@@ -16,7 +16,6 @@ LICENSE="MIT"
 if [[ ${PV} = 9999 ]]; then
 	EGIT_REPO_URI="https://github.com/${PN}/${PN}"
 	EGIT_BOOTSTRAP=""
-	KEYWORDS=""
 else
 	SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz"
 	KEYWORDS="~amd64 ~x86"
