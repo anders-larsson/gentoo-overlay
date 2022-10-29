@@ -17,7 +17,7 @@ if [[ ${PV} = 9999 ]]; then
 	EGIT_REPO_URI="https://github.com/${PN}/${PN}"
 	EGIT_BOOTSTRAP=""
 else
-	SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz"
+	SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~x86"
 
 	MY_P="${P/dwarf-therapist/Dwarf-Therapist}"
