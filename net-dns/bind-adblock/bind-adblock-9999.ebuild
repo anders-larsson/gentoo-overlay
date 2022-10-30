@@ -12,7 +12,6 @@ EGIT_REPO_URI="https://github.com/Trellmor/bind-adblock.git"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64"
 IUSE="network-cron systemd"
 
 DEPEND=""
