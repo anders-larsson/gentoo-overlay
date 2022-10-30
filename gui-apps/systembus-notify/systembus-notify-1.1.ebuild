@@ -5,7 +5,7 @@ EAPI=7
 
 DESCRIPTION="Tiny daemon that listens and sends desktop notifications using the user bus"
 HOMEPAGE="https://github.com/rfjakob/systembus-notify"
-SRC_URI="https://github.com/rfjakob/systembus-notify/archive/v${PV}.tar.gz"
+SRC_URI="https://github.com/rfjakob/systembus-notify/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
