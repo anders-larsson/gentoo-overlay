@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit git-r3 systemd
+inherit systemd
 
 DESCRIPTION="Fetch various blocklists and generate a BIND zone from them."
 HOMEPAGE="https://github.com/Trellmor/bind-adblock"
@@ -11,7 +11,10 @@ HOMEPAGE="https://github.com/Trellmor/bind-adblock"
 LICENSE="MIT"
 SLOT="0"
 
-EGIT_REPO_URI="https://github.com/Trellmor/bind-adblock.git"
+MY_COMMIT="85e70560d9804bd92b7d0a4d9833ccc8b7a4c74a"
+SRC_URI="https://github.com/Trellmor/bind-adblock/archive/${MY_COMMIT}.tar.gz -> ${P}.tar.gz"
+KEYWORDS="~amd64 ~x86"
+S="${WORKDIR}/${PN}-${MY_COMMIT}"
 
 IUSE="network-cron systemd"
 
