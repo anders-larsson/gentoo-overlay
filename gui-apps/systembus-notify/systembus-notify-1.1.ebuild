@@ -3,6 +3,8 @@
 
 EAPI=7
 
+inherit desktop
+
 DESCRIPTION="Tiny daemon that listens and sends desktop notifications using the user bus"
 HOMEPAGE="https://github.com/rfjakob/systembus-notify"
 SRC_URI="https://github.com/rfjakob/systembus-notify/archive/v${PV}.tar.gz -> ${P}.tar.gz"
@@ -17,8 +19,7 @@ RDEPEND="${DEPEND}"
 src_install() {
 	dobin systembus-notify
 
-	insinto /usr/share/applications
-	doins systembus-notify.desktop
+	domenu systembus-notify.desktop
 
 	dodoc README.md
 }
