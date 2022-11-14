@@ -4,4 +4,7 @@
 	<longdescription lang="en">
 		Tiny daemon that listens for net.nuetzlich.SystemNotifications.Notify signals on the D-Bus system bus and shows them as desktop notifications using the user bus. Works on Linux with Gnome, Cinnamon, KDE, LXQT, ...
 	</longdescription>
+	<upstream>
+		<remote-id type="github">rfjakob/systembus-notify</remote-id>
+	</upstream>
 </pkgmetadata>

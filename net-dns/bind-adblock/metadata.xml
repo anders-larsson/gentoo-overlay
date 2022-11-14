@@ -9,4 +9,7 @@
 		<flag name="network-cron">Adds a cron job which updates zone managed by bind-adblock.</flag>
 		<flag name="systemd">Adds systemd timer which updates zone managed by bind-adblock. Disabled by default.</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">Trellmor/bind-adblock</remote-id>
+	</upstream>
 </pkgmetadata>

@@ -4,4 +4,7 @@
 	<longdescription lang="en">
 		RSS-Bridge is a PHP project capable of generating RSS and Atom feeds for websites that don't have one. It can be used on webservers or as a stand-alone application in CLI mode.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">RSS-Bridge/rss-bridge</remote-id>
+	</upstream>
 </pkgmetadata>
