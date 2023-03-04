@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -40,6 +40,20 @@ need_httpd_cgi  # From webapp.eclass
 
 src_install() {
 	webapp_src_preinst
+
+	# freshrss 1.21.0 and newer checks if it can write to index.html in several
+	# directories. Every time webapp-config runs it reinstalls these files with
+	# the webserver user as their owner. RSS feed refresh script fails to run
+	# if PHP user cannot write to the required files causing the refresh to fail.
+	# Introduced by https://github.com/FreshRSS/FreshRSS/pull/4780.
+	for file in \
+			data/index.html \
+			data/cache/index.html \
+			data/users/index.html \
+			data/favicons/index.html \
+			data/tokens/index.html; do
+		rm -f $file
+	done
 
 	insinto "/${MY_HTDOCSDIR}"
 	doins -r *
