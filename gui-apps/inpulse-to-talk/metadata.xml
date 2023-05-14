@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<longdescription lang="en">
+		Push-to-Talk with libinput + Pulseaudio. This is not strictly push-to-talk, but it works as so in practice. The default status is muting all inputs, and un-muting them only when the key is pressed (after the KeyPress event, and before the KeyRelease event).
+	</longdescription>
+	<use>
+		<flag name="policykit">
+			Install policykit action to allow execution of script through policykit.
+		</flag>
+		<flag name="scripts">
+			Install wrapper scripts for inpulse-to-talk.
+		</flag>
+	</use>
+	<upstream>
+		<remote-id type="gitlab">somini/inpulse-to-talk</remote-id>
+	</upstream>
+</pkgmetadata>
