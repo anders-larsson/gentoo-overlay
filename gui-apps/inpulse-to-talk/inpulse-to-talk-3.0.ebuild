@@ -4,49 +4,49 @@
 EAPI=8
 
 CRATES="
-	ansi_term-0.12.1
-	atty-0.2.14
-	autocfg-1.1.0
-	bitflags-1.3.2
-	cfg-if-1.0.0
-	clap-2.34.0
-	hermit-abi-0.1.19
-	hermit-abi-0.3.1
-	input-0.8.2
-	input-sys-1.17.0
-	io-lifetimes-1.0.11
-	libc-0.2.146
-	libudev-sys-0.1.4
-	log-0.4.19
-	memoffset-0.7.1
-	nix-0.26.2
-	pin-utils-0.1.0
-	pkg-config-0.3.27
-	static_assertions-1.1.0
-	strsim-0.8.0
-	textwrap-0.11.0
-	udev-0.7.0
-	unicode-width-0.1.10
-	vec_map-0.8.2
-	winapi-0.3.9
-	winapi-i686-pc-windows-gnu-0.4.0
-	winapi-x86_64-pc-windows-gnu-0.4.0
-	windows-sys-0.48.0
-	windows-targets-0.48.0
-	windows_aarch64_gnullvm-0.48.0
-	windows_aarch64_msvc-0.48.0
-	windows_i686_gnu-0.48.0
-	windows_i686_msvc-0.48.0
-	windows_x86_64_gnu-0.48.0
-	windows_x86_64_gnullvm-0.48.0
-	windows_x86_64_msvc-0.48.0
+	ansi_term@0.12.1
+	atty@0.2.14
+	autocfg@1.1.0
+	bitflags@1.3.2
+	cfg-if@1.0.0
+	clap@2.34.0
+	hermit-abi@0.1.19
+	hermit-abi@0.3.1
+	input@0.8.2
+	input-sys@1.17.0
+	io-lifetimes@1.0.11
+	libc@0.2.146
+	libudev-sys@0.1.4
+	log@0.4.19
+	memoffset@0.7.1
+	nix@0.26.2
+	pin-utils@0.1.0
+	pkg-config@0.3.27
+	static_assertions@1.1.0
+	strsim@0.8.0
+	textwrap@0.11.0
+	udev@0.7.0
+	unicode-width@0.1.10
+	vec_map@0.8.2
+	winapi@0.3.9
+	winapi-i686-pc-windows-gnu@0.4.0
+	winapi-x86_64-pc-windows-gnu@0.4.0
+	windows-sys@0.48.0
+	windows-targets@0.48.0
+	windows_aarch64_gnullvm@0.48.0
+	windows_aarch64_msvc@0.48.0
+	windows_i686_gnu@0.48.0
+	windows_i686_msvc@0.48.0
+	windows_x86_64_gnu@0.48.0
+	windows_x86_64_gnullvm@0.48.0
+	windows_x86_64_msvc@0.48.0
 "
 
 inherit cargo
 
 DESCRIPTION="Push-to-Talk with libinput"
 HOMEPAGE="https://gitlab.com/somini/inpulse-to-talk"
-SRC_URI="$(cargo_crate_uris)"
+SRC_URI="${CARGO_CRATE_URIS}"
 SRC_URI+=" https://gitlab.com/somini/inpulse-to-talk/-/archive/v${PV}/inpulse-to-talk-v${PV}.tar.bz2"
 IUSE="policykit scripts"
 S="${WORKDIR}/${PN}-v${PV}"
