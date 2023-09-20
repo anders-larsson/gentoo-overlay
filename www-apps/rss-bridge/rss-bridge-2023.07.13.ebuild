@@ -27,10 +27,7 @@ fi
 IUSE="sqlite"
 
 DEPEND="
-	|| (
-		<dev-lang/php-8[ssl,xml,unicode,simplexml,curl,json,filter,zip,sqlite?]
-		>=dev-lang/php-8[ssl,xml,unicode,simplexml,curl,filter,zip,sqlite?]
-	)
+	dev-lang/php[ssl,xml,unicode,simplexml,curl,filter,zip,sqlite?]
 	virtual/httpd-php:*
 "
 
