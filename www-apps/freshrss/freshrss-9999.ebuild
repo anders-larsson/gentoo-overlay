@@ -27,10 +27,7 @@ IUSE="mysql sqlite postgres +gmp +unicode +iconv +zip +zlib"
 # XML is enabled by simplexml
 # mbstring is enabled by unicode
 DEPEND="
-	|| (
-		<dev-lang/php-8[curl,xml,json,simplexml,session,ctype,pdo,mysql?,sqlite?,postgres?,gmp?,unicode?,iconv?,zip?,zlib?]
-		>=dev-lang/php-8[curl,xml,simplexml,session,ctype,pdo,mysql?,sqlite?,postgres?,gmp?,unicode?,iconv?,zip?,zlib?]
-	)
+	dev-lang/php[curl,xml,simplexml,session,ctype,pdo,mysql?,sqlite?,postgres?,gmp?,unicode?,iconv?,zip?,zlib?]
 	virtual/httpd-php:*
 "
 
