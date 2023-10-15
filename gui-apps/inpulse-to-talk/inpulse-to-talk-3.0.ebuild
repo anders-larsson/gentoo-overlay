@@ -60,7 +60,6 @@ KEYWORDS="~amd64"
 DEPEND="dev-libs/libinput
 	policykit? ( sys-auth/polkit )"
 RDEPEND="${DEPEND}"
-BDEPEND=""
 
 # rust does not use *FLAGS from make.conf, silence portage warning
 # update with proper path to binaries this crate installs, omit leading /

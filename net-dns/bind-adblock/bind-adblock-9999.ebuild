@@ -15,9 +15,7 @@ EGIT_REPO_URI="https://github.com/Trellmor/bind-adblock.git"
 
 IUSE="network-cron systemd"
 
-DEPEND=""
 RDEPEND="
-	${DEPEND}
 	dev-python/pycryptodome
 	dev-python/dnspython
 	dev-python/requests

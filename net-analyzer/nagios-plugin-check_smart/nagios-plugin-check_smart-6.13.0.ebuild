@@ -15,7 +15,6 @@ LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-DEPEND=""
 RDEPEND="
 	virtual/perl-Getopt-Long
 	sys-apps/smartmontools
