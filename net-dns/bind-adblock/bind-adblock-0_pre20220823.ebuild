@@ -18,9 +18,7 @@ S="${WORKDIR}/${PN}-${MY_COMMIT}"
 
 IUSE="network-cron systemd"
 
-DEPEND=""
 RDEPEND="
-	${DEPEND}
 	dev-python/pycryptodome
 	dev-python/dnspython
 	dev-python/requests

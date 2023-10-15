@@ -15,9 +15,7 @@ SRC_URI="https://github.com/Josef-Friedrich/${MY_PN}/archive/v${PV}.tar.gz -> ${
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE=""
 
-DEPEND=""
 RDEPEND="dev-python/nagiosplugin"
 
 src_install() {
