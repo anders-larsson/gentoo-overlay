@@ -1,0 +1,3 @@
+1. Copy over the default config ${VHOST_ROOT}/config.default.ini.php ${VHOST_ROOT}/config.ini.php
+2. Modify ${VHOST_ROOT}/config.ini.php to your needs
+3. Ensure ${VHOST_ROOT}/cache is write-able by php/php-fpm user

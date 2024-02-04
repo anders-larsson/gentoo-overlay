@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -43,12 +43,15 @@ src_install() {
 		docker* php* scalingo.json
 	fi
 
+	rm -rf composer.* docker-* app.json
+
 	webapp_src_preinst
 
 	insinto "/${MY_HTDOCSDIR}"
-	doins -r *
+	doins -r ./*
 
-	webapp_serverowned -R "${MY_HTDOCSDIR}/data"
+	webapp_postinst_txt en "${FILESDIR}"/post-install.txt
+
 	webapp_src_install
 }
 
