@@ -48,7 +48,7 @@ DESCRIPTION="Push-to-Talk with libinput"
 HOMEPAGE="https://gitlab.com/somini/inpulse-to-talk"
 SRC_URI="${CARGO_CRATE_URIS}"
 SRC_URI+=" https://gitlab.com/somini/inpulse-to-talk/-/archive/v${PV}/inpulse-to-talk-v${PV}.tar.bz2"
-IUSE="policykit scripts"
+
 S="${WORKDIR}/${PN}-v${PV}"
 
 # License set may be more restrictive as OR is not respected
@@ -56,6 +56,7 @@ S="${WORKDIR}/${PN}-v${PV}"
 LICENSE="Apache-2.0 Apache-2.0-with-LLVM-exceptions MIT GPL-3"
 SLOT="0"
 KEYWORDS="~amd64"
+IUSE="policykit scripts"
 
 DEPEND="dev-libs/libinput
 	policykit? ( sys-auth/polkit )"
