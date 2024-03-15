@@ -9,11 +9,11 @@ PYTHON_COMPAT=( python3_{9..12} )
 inherit distutils-r1
 
 MY_PN="${PN/nagios-plugin-/}"
-S="${WORKDIR}/${MY_PN}-${PV}"
 
 DESCRIPTION="check_systemd is a Nagios / Icinga monitoring plugin to check systemd"
 HOMEPAGE="https://github.com/Josef-Friedrich/check_systemd"
 SRC_URI="https://github.com/Josef-Friedrich/${MY_PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}/${MY_PN}-${PV}"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
