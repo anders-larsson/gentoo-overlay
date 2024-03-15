@@ -8,13 +8,13 @@ inherit systemd
 DESCRIPTION="Fetch various blocklists and generate a BIND zone from them."
 HOMEPAGE="https://github.com/Trellmor/bind-adblock"
 
-LICENSE="MIT"
-SLOT="0"
-
 MY_COMMIT="85e70560d9804bd92b7d0a4d9833ccc8b7a4c74a"
 SRC_URI="https://github.com/Trellmor/bind-adblock/archive/${MY_COMMIT}.tar.gz -> ${P}.tar.gz"
-KEYWORDS="~amd64 ~x86"
 S="${WORKDIR}/${PN}-${MY_COMMIT}"
+
+LICENSE="MIT"
+SLOT="0"
+KEYWORDS="~amd64 ~x86"
 
 IUSE="network-cron systemd"
 
