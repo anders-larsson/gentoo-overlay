@@ -14,7 +14,7 @@ S="${WORKDIR}/${PN}-${MY_COMMIT}"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~x86"
 
 IUSE="network-cron systemd"
 
