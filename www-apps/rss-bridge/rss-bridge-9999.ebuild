@@ -62,4 +62,6 @@ pkg_postinst() {
 
 	elog "2023-09-24 introduces a new caching mechanism and n ./cache/"
 	elog "(e.g. cache/server and cache/pages) are no longer in use."
+
+	webapp_pkg_postinst
 }
