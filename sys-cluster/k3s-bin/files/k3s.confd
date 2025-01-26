@@ -1,0 +1,2 @@
+command_args="server --write-kubeconfig-mode=644"
+command_user="root:root"
