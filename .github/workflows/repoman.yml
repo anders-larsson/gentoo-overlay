@@ -1,9 +1,0 @@
----
-name: 'Continuous Integration'
-on: [push, pull_request]
-jobs:
-  repoman:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - uses: ferki/repoman-ebuild-qa-action@ferki
