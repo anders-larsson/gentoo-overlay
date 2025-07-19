@@ -1,0 +1,8 @@
+/var/log/gotify-server-bin/*.log {
+	missingok
+	notifempty
+	sharedscripts
+	postrotate
+		rc-service gotify-server-bin restart > /dev/null
+	endscript
+}

@@ -1,0 +1,19 @@
+#!/sbin/openrc-run
+# Copyright 2025 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+name="gotify-server-bin"
+description="gotify server (bin)"
+command="/usr/bin/${name}"
+pidfile="/run/${name}.pid"
+logdir="/var/log/${name}"
+command_background="yes"
+command_user="gotify:gotify"
+directory="/var/lib/gotify"
+output_log="${logdir}/${name}.log"
+error_log="${logdir}/error.log"
+
+depend() {
+	need net
+	use dns
+}
