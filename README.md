@@ -13,6 +13,7 @@ The following packages are available in this overlay:
 * nagios-plugin-check_smart - https://github.com/Napsty/check_smart
 * nagios-plugin-check_systemd - https://github.com/Josef-Friedrich/check_systemd
 * pam_rssh - https://github.com/z4yx/pam_rssh
+* pam-ssh-agent - https://github.com/nresare/pam-ssh-agent
 * rss-bridge - https://github.com/RSS-Bridge/rss-bridge
 * systembus-notify - https://github.com/rfjakob/systembus-notify
 
