@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<longdescription lang="en">
+		The goal of this project is to provide a PAM authentication module determining the identity of a user based on a signature request and response sent via the ssh-agent protocol to a potentially remote ssh-agent.
+		One scenario that this module can be used in is to grant escalated privileges on a remote system accessed using ssh with agent forwarding enabled and the sudo command.
+	</longdescription>
+	<use>
+		<flag name="native-crypto">
+			Use FIPS-validated cryptography.
+
+			Unless you are someone that has a mandate to only run FIPS validated crypto implementations, you probably don't want this feature enabled.
+			See https://github.com/nresare/pam-ssh-agent/issues/24
+		</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">nresare/pam-ssh-agent</remote-id>
+	</upstream>
+</pkgmetadata>
