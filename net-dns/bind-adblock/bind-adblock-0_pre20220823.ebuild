@@ -5,7 +5,7 @@ EAPI=7
 
 inherit systemd
 
-DESCRIPTION="Fetch various blocklists and generate a BIND zone from them."
+DESCRIPTION="Fetch various blocklists and generate a BIND zone from them"
 HOMEPAGE="https://github.com/Trellmor/bind-adblock"
 
 MY_COMMIT="85e70560d9804bd92b7d0a4d9833ccc8b7a4c74a"
