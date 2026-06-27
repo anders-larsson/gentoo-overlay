@@ -145,7 +145,7 @@ CRATES="
 
 inherit cargo pam
 
-DESCRIPTION="A PAM module that authenticates using the ssh-agent."
+DESCRIPTION="A PAM module that authenticates using the ssh-agent"
 HOMEPAGE="https://github.com/nresare/pam-ssh-agent"
 SRC_URI="
 	https://github.com/nresare/pam-ssh-agent/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz
