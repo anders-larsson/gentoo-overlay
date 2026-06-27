@@ -5,7 +5,7 @@ EAPI=7
 
 inherit git-r3 systemd
 
-DESCRIPTION="Fetch various blocklists and generate a BIND zone from them."
+DESCRIPTION="Fetch various blocklists and generate a BIND zone from them"
 HOMEPAGE="https://github.com/Trellmor/bind-adblock"
 
 LICENSE="MIT"
