@@ -1,4 +1,4 @@
-# Copyright 2025 Gentoo Authors
+# Copyright 2025-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -14,7 +14,6 @@ SRC_URI="
 	arm? ( https://github.com/gotify/server/releases/download/v${PV}/gotify-linux-arm-7.zip -> ${P}_arm.zip )
 	arm64? ( https://github.com/gotify/server/releases/download/v${PV}/gotify-linux-arm64.zip -> ${P}_arm64.zip )
 	riscv? ( https://github.com/gotify/server/releases/download/v${PV}/gotify-linux-riscv64.zip -> ${P}_riscv.zip )
-	https://raw.githubusercontent.com/gotify/server/v${PV}/config.example.yml -> ${P}_config.example.yml
 "
 S="${WORKDIR}"
 
@@ -30,9 +29,6 @@ BDEPEND="app-arch/unzip"
 QA_PREBUILT="/usr/bin/${PN}"
 
 src_prepare() {
-	cp "${DISTDIR}/${P}_config.example.yml" config.example.yml || die
-	sed -i 's/listenaddr: ""/listenaddr: "[::1]"/' config.example.yml || die
-
 	cp "${FILESDIR}/${PN}.logrotate" . || die
 	if use systemd; then
 		sed -Ei "s/^(\s*)rc-service.*/\1systemctl restart ${PN}.service/" \
@@ -50,7 +46,6 @@ src_install() {
 	use riscv && myarch="riscv64"
 
 	newbin gotify-linux-${myarch} ${PN}
-	dodoc config.example.yml
 
 	newinitd "${FILESDIR}/${PN}.initd" ${PN}
 	systemd_newunit "${FILESDIR}/${PN}.service" ${PN}.service
@@ -64,4 +59,10 @@ src_install() {
 	keepdir var/lib/gotify
 	keepdir etc/gotify
 	keepdir var/log/${PN}
+}
+
+pkg_postinst() {
+	ewarn "Gotify 3.0.0 no longer uses a configuration file for configuration."
+	ewarn "See release notes for more information."
+	ewarn "https://github.com/gotify/server/releases/tag/v3.0.0"
 }
