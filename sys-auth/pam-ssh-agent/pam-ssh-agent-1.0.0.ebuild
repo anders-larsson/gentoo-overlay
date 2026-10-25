@@ -1,0 +1,175 @@
+# Copyright 2026 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+EAPI=8
+RUST_MIN_VER="1.88.0"
+
+CRATES="
+	aho-corasick@1.1.5
+	anstream@1.0.0
+	anstyle-parse@1.0.0
+	anstyle-query@1.1.5
+	anstyle-wincon@3.0.11
+	anstyle@1.0.14
+	anyhow@1.0.104
+	autocfg@1.5.1
+	base16ct@0.2.0
+	base64@0.23.1
+	base64ct@1.8.3
+	bitflags@1.3.2
+	bitflags@2.13.2
+	block-buffer@0.10.4
+	bytes@1.12.1
+	cc@1.8.0
+	cfg-if@1.0.5
+	cipher@0.4.4
+	colorchoice@1.0.5
+	const-oid@0.9.6
+	cpufeatures@0.2.17
+	crypto-bigint@0.5.5
+	crypto-common@0.1.6
+	curve25519-dalek-derive@0.1.1
+	curve25519-dalek@4.1.3
+	defmt-macros@1.1.1
+	defmt-parser@1.0.0
+	defmt@1.1.1
+	der@0.7.10
+	deranged@0.5.9
+	digest@0.10.7
+	doctest-file@1.1.1
+	ecdsa@0.16.9
+	ed25519-dalek@2.2.0
+	ed25519@2.2.3
+	elliptic-curve@0.13.8
+	env_filter@2.0.0
+	env_logger@0.11.11
+	ff@0.13.1
+	fiat-crypto@0.2.9
+	find-msvc-tools@0.1.14
+	foreign-types-shared@0.1.1
+	foreign-types@0.3.2
+	generic-array@0.14.9
+	getrandom@0.2.17
+	getrandom@0.4.3
+	group@0.13.0
+	hkdf@0.12.4
+	hmac@0.12.1
+	hostname@0.4.2
+	inout@0.1.4
+	interprocess@2.4.5
+	is_terminal_polyfill@1.70.2
+	jiff-core@0.1.1
+	jiff-static@0.2.38
+	jiff@0.2.38
+	lazy_static@1.5.1
+	libc@0.2.190
+	libm@0.2.16
+	log@0.4.34
+	memchr@2.8.3
+	num-bigint-dig@0.8.6
+	num-conv@0.2.2
+	num-integer@0.1.47
+	num-iter@0.1.46
+	num-traits@0.2.19
+	num_threads@0.1.7
+	once_cell_polyfill@1.70.2
+	openssl-macros@0.1.1
+	openssl-sys@0.9.117
+	openssl@0.10.81
+	p256@0.13.2
+	p384@0.13.1
+	p521@0.13.3
+	pam-bindings@0.3.0
+	pem-rfc7468@0.7.0
+	pkcs1@0.7.5
+	pkcs8@0.10.2
+	pkg-config@0.3.34
+	portable-atomic-util@0.2.8
+	portable-atomic@1.15.0
+	powerfmt@0.2.1
+	ppv-lite86@0.2.21
+	primeorder@0.13.6
+	proc-macro2@1.0.107
+	quote@1.0.47
+	r-efi@6.0.0
+	rand@0.8.8
+	rand_chacha@0.3.1
+	rand_core@0.6.4
+	recvmsg@1.0.0
+	regex-automata@0.4.18
+	regex-syntax@0.8.11
+	regex@1.13.1
+	rfc6979@0.4.0
+	rsa@0.9.10
+	rustc_version@0.4.1
+	sec1@0.7.3
+	semver@1.0.28
+	serde_core@1.0.229
+	serde_derive@1.0.229
+	sha2@0.10.9
+	shlex@2.0.1
+	signature@2.2.0
+	smallvec@1.16.3
+	spin@0.9.9
+	spki@0.7.3
+	ssh-agent-client-rs@1.1.4
+	ssh-cipher@0.2.0
+	ssh-encoding@0.2.0
+	ssh-key@0.6.7
+	subtle@2.6.1
+	syn@2.0.119
+	syn@3.0.9
+	syslog@7.0.0
+	thiserror-impl@2.0.21
+	thiserror@2.0.21
+	time-core@0.1.9
+	time-macros@0.2.32
+	time@0.3.55
+	typenum@1.20.1
+	unicode-ident@1.0.27
+	utf8parse@0.2.2
+	uzers@0.12.2
+	vcpkg@0.2.15
+	version_check@0.9.5
+	wasi@0.11.1+wasi-snapshot-preview1
+	widestring@1.2.1
+	windows-link@0.2.1
+	windows-sys@0.61.2
+	zerocopy-derive@0.8.63
+	zerocopy@0.8.63
+	zeroize@1.9.1
+"
+
+inherit cargo pam
+
+DESCRIPTION="A PAM module that authenticates using the ssh-agent"
+HOMEPAGE="https://github.com/nresare/pam-ssh-agent"
+SRC_URI="
+	https://github.com/nresare/pam-ssh-agent/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz
+	${CARGO_CRATE_URIS}
+"
+
+LICENSE="|| ( Apache-2.0 MIT )"
+LICENSE+=" 0BSD Apache-2.0 BSD MIT Unicode-3.0"
+SLOT="0"
+KEYWORDS="~amd64 ~arm64"
+IUSE="native-crypto"
+
+RDEPENDS="
+	dev-libs/openssl:=
+"
+
+src_configure() {
+	export OPENSSL_NO_VENDOR=1
+
+	local myfeatures=(
+		$(usev native-crypto)
+	)
+
+	cargo_src_configure --no-default-features
+}
+
+src_install() {
+	dodoc README.md
+	newpammod target/release/libpam_ssh_agent.so pam_ssh_agent.so
+}
